@@ -43,7 +43,13 @@ class LinkedList {
   }
 
   pop() {
+    let current = this;
 
+    while (current.next.next != null) {
+      current = current.next
+    }
+
+    current.next = null;
   }
 
   contains(value) {
@@ -104,7 +110,8 @@ list.append('Node 1');
 list.append('Node 2');
 list.append('Node 3');
 console.log(list.toString());
-list.preppend('Node 4')
+list.pop()
+// list.preppend('Node 4')
 console.log(list.toString());
 
 // NOTAS:
