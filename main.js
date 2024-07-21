@@ -16,6 +16,34 @@ class LinkedList {
 
   }
 
+  at(index) {
+    let i = 1;
+    let current = this;
+
+    while (current.next != null) {
+      if(i === index) return current.value
+      current = current.next
+      i++
+    }
+
+    return false
+  }
+
+  pop() {
+
+  }
+
+  contains(value) {
+    let current = this;
+
+    while (current.next != null) {
+      if (current.value == value) return true;
+      current = current.next;
+    };
+
+    return false;
+  }
+
   head() {
     return this.next.value;
   }
@@ -50,8 +78,8 @@ const list = new LinkedList();
 list.append('Node 1');
 list.append('Node 2');
 list.append('Node 3');
-console.log(list.tail());
-console.log(list.toString());
+console.log(list.contains('Node 1'));
+// console.log(list.toString());
 
 
 // NOTAS:
