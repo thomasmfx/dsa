@@ -16,6 +16,19 @@ class LinkedList {
 
   }
 
+  head() {
+    return this.next.value;
+  }
+
+  tail() {
+    let current = this;
+    while (current.next != null) {
+      current = current.next
+    };
+
+    return current.value
+  }
+
   toString() {
     let string = '';
     let current = this;
@@ -37,7 +50,7 @@ const list = new LinkedList();
 list.append('Node 1');
 list.append('Node 2');
 list.append('Node 3');
-console.log(list);
+console.log(list.tail());
 console.log(list.toString());
 
 
