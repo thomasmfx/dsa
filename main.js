@@ -13,7 +13,9 @@ class LinkedList {
   };
 
   preppend(value) {
-
+    let node = createNode(value);
+    node.next = this.next.next
+    this.next = node;
   }
 
   size() {
@@ -101,9 +103,9 @@ const list = new LinkedList();
 list.append('Node 1');
 list.append('Node 2');
 list.append('Node 3');
-console.log(list.size());
-// console.log(list.toString());
-
+console.log(list.toString());
+list.preppend('Node 4')
+console.log(list.toString());
 
 // NOTAS:
 
