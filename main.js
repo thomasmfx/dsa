@@ -5,11 +5,27 @@ class LinkedList {
   };
 
   append(value) {
-    appendToEnd(this, createNode(value))
+    let current = this;
+    while (current.next != null) {
+      current = current.next
+    };
+    current.next = createNode(value);
   };
 
+  preppend(value) {
+
+  }
+
   toString() {
-    return returnValues(this);
+    let string = '';
+    let current = this;
+
+    while (current != null) {
+      string += `( ${current.value} ) -> `;
+      current = current.next;
+    };
+
+    return string += 'null';
   }
 };
 
@@ -24,25 +40,6 @@ list.append('Node 3');
 console.log(list);
 console.log(list.toString());
 
-function appendToEnd(obj, newValue) {
-  let current = obj;
-  while (current.next != null) {
-    current = current.next
-  };
-  current.next = newValue;
-}
-
-function returnValues(obj) {
-  let string = '';
-  let current = obj;
-
-  while (current != null) {
-    string += `( ${current.value} ) -> `;
-    current = current.next
-  }
-
-  return string += 'null';
-}
 
 // NOTAS:
 
