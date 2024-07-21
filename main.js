@@ -7,16 +7,16 @@ class LinkedList {
   append(value) {
     let current = this;
     while (current.next != null) {
-      current = current.next
+      current = current.next;
     };
     current.next = createNode(value);
   };
 
   preppend(value) {
     let node = createNode(value);
-    node.next = this.next.next
+    node.next = this.next.next;
     this.next = node;
-  }
+  };
 
   size() {
     let current = this;
@@ -26,31 +26,31 @@ class LinkedList {
       i++;
     };
 
-    return i
-  }
+    return i;
+  };
 
   at(index) {
     let i = 0;
     let current = this;
 
     while (current.next != null) {
-      if(i === index) return current.value
-      current = current.next
-      i++
-    }
+      if(i === index) return current.value;
+      current = current.next;
+      i++;
+    };
 
-    return null
-  }
+    return null;
+  };
 
   pop() {
     let current = this;
 
     while (current.next.next != null) {
-      current = current.next
-    }
+      current = current.next;
+    };
 
     current.next = null;
-  }
+  };
 
   contains(value) {
     let current = this;
@@ -61,7 +61,7 @@ class LinkedList {
     };
 
     return false;
-  }
+  };
 
   find(value) {
     let current = this;
@@ -72,12 +72,12 @@ class LinkedList {
       i++;
     };
 
-    return null
-  }
+    return null;
+  };
 
   head() {
     return this.next.value;
-  }
+  };
 
   tail() {
     let current = this;
@@ -86,7 +86,7 @@ class LinkedList {
     };
 
     return current.value;
-  }
+  };
 
   toString() {
     let string = '';
