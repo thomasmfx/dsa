@@ -16,8 +16,19 @@ class LinkedList {
 
   }
 
+  size() {
+    let current = this;
+    let i = 0;
+    while (current.next != null) {
+      current = current.next;
+      i++;
+    };
+
+    return i
+  }
+
   at(index) {
-    let i = 1;
+    let i = 0;
     let current = this;
 
     while (current.next != null) {
@@ -26,7 +37,7 @@ class LinkedList {
       i++
     }
 
-    return false
+    return null
   }
 
   pop() {
@@ -44,6 +55,18 @@ class LinkedList {
     return false;
   }
 
+  find(value) {
+    let current = this;
+    let i = 0;
+    while (current.next != null) {
+      if (current.value == value) return i;
+      current = current.next;
+      i++;
+    };
+
+    return null
+  }
+
   head() {
     return this.next.value;
   }
@@ -51,10 +74,10 @@ class LinkedList {
   tail() {
     let current = this;
     while (current.next != null) {
-      current = current.next
+      current = current.next;
     };
 
-    return current.value
+    return current.value;
   }
 
   toString() {
@@ -78,7 +101,7 @@ const list = new LinkedList();
 list.append('Node 1');
 list.append('Node 2');
 list.append('Node 3');
-console.log(list.contains('Node 1'));
+console.log(list.size());
 // console.log(list.toString());
 
 
