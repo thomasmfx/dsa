@@ -5,12 +5,26 @@ function generateBuckets(arr) {
   if (mapSize === 0) mapSize = 16;
 
   for(let i = 0; i < mapSize; i++) {
-    arr.push(new LinkedList());
+    arr.push([new LinkedList()]);
   }
 }
 
 function capacity(arr) {
-  return arr.length
+  return arr.length;
+}
+
+function loadFactor(arr) {
+  let mapSize = capacity(arr);
+  let factor = 0.8;
+
+  let entries = 0;
+  for (let i = 0; i < mapSize; i++) {
+    if (arr[i].head) {
+      entries++;
+    } 
+  }
+  
+  if (entries > mapSize * factor) return generateBuckets(arr)
 }
 
 class HashMap {
