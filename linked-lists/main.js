@@ -1,3 +1,7 @@
+function createNode(value) {
+  return { value, next: null };
+};
+
 class LinkedList {
   constructor() {
     this.head = null;
@@ -123,10 +127,6 @@ class LinkedList {
 
     return null;
   };
-};
-
-function createNode(value) {
-  return { value, next: null };
 };
 
 const list = new LinkedList();
