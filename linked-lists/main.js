@@ -88,7 +88,41 @@ class LinkedList {
       current = current.next;
     };
     return string += 'null';
-  }
+  };
+
+  insertAt(value, index) {
+    let node = createNode(value);
+    let current = this.head;
+    let i = 0;
+
+    while (current.next != null) {
+      i++;
+      if (i === index) {
+        node.next = current.next;
+        current.next = node;
+        return;
+      };
+      current = current.next;
+    };
+
+    return null;
+  };
+
+  removeAt(index) {
+    let current = this.head;
+    let i = 0;
+
+    while (current.next != null) {
+      i++;
+      if (i === index) {
+        current.next = current.next.next;
+        return;
+      } 
+      current = current.next;
+    };
+
+    return null;
+  };
 };
 
 function createNode(value) {
@@ -103,9 +137,7 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-console.log()
-
-console.log(list);
+console.log(list.toString());
 
 // list.preppend('hamster')
 // list.size()
@@ -116,8 +148,5 @@ console.log(list);
 // list.contains('cat')
 // list.find('parrot')
 // list.toString()
-
-
-
-
-
+// list.insertAt('wolf', 3)
+// list.removeAt(2)
