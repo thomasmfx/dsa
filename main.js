@@ -106,16 +106,12 @@ function createNode(value) {
 };
 
 const list = new LinkedList();
-list.append('Node 1');
-list.append('Node 2');
-list.append('Node 3');
-console.log(list.toString());
-list.pop()
-// list.preppend('Node 4')
-console.log(list.toString());
 
-// NOTAS:
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
-// Veja se já não existe um método embutido para executar uma função
-// Recursão -> loop
-// variáveis
+console.log(list.toString())
