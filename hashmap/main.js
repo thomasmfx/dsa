@@ -1,7 +1,7 @@
 import LinkedList from "../linked-lists/main.js";
 
 function generateBuckets(arr) {
-  let mapSize = capacity(arr)
+  let mapSize = capacity(arr);
   if (mapSize === 0) mapSize = 16;
 
   for(let i = 0; i < mapSize; i++) {
@@ -24,7 +24,7 @@ function loadFactor(arr) {
     } 
   }
   
-  if (entries > mapSize * factor) return generateBuckets(arr)
+  if (entries > mapSize * factor) return generateBuckets(arr);
 }
 
 class HashMap {
