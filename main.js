@@ -17,7 +17,7 @@ class LinkedList {
     node.next = this.next.next;
     this.next = node;
   };
-
+  
   size() {
     let current = this;
     let i = 0;
@@ -114,4 +114,4 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.toString())
+console.log(list.toString());
