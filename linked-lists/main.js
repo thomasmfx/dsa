@@ -1,11 +1,12 @@
 class LinkedList {
   constructor() {
-    this.value = 'HEAD'
-    this.next = null
+    this.head = null;
   };
 
   append(value) {
-    let current = this;
+    if (this.head == null) return this.head = createNode(value);
+
+    let current = this.head;
     while (current.next != null) {
       current = current.next;
     };
@@ -14,89 +15,78 @@ class LinkedList {
 
   preppend(value) {
     let node = createNode(value);
-    node.next = this.next.next;
-    this.next = node;
+    node.next = this.head;
+    this.head = node;
   };
   
   size() {
-    let current = this;
+    let current = this.head;
     let i = 0;
     while (current.next != null) {
       current = current.next;
       i++;
     };
-
     return i;
   };
 
   at(index) {
     let i = 0;
-    let current = this;
-
-    while (current.next != null) {
+    let current = this.head;
+    while (current != null) {
       if(i === index) return current.value;
-      current = current.next;
       i++;
+      current = current.next;
     };
-
     return null;
   };
 
   pop() {
-    let current = this;
-
+    let current = this.head;
     while (current.next.next != null) {
       current = current.next;
     };
-
     current.next = null;
   };
 
   contains(value) {
-    let current = this;
-
-    while (current.next != null) {
-      if (current.value == value) return true;
+    let current = this.head;
+    while (current != null) {
+      if (current.value === value) return true;
       current = current.next;
     };
-
     return false;
   };
 
   find(value) {
-    let current = this;
+    let current = this.head;
     let i = 0;
-    while (current.next != null) {
-      if (current.value == value) return i;
+    while (current != null) {
+      if (current.value === value) return i;
       current = current.next;
       i++;
     };
-
     return null;
   };
 
-  head() {
-    return this.next.value;
+  getHead() {
+    return this.head.value;
   };
 
   tail() {
-    let current = this;
+    let current = this.head;
     while (current.next != null) {
       current = current.next;
     };
-
     return current.value;
   };
 
   toString() {
     let string = '';
-    let current = this;
-
+    let current = this.head;
     while (current != null) {
       string += `( ${current.value} ) -> `;
       current = current.next;
     };
-
     return string += 'null';
   }
 };
@@ -113,5 +103,21 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
+console.log()
 
-console.log(list.toString());
+console.log(list);
+
+// list.preppend('hamster')
+// list.size()
+// list.getHead()
+// list.tail()
+// list.at(1)
+// list.pop()
+// list.contains('cat')
+// list.find('parrot')
+// list.toString()
+
+
+
+
+
