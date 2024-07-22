@@ -137,7 +137,7 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-console.log(list.toString());
+// console.log(list.toString());
 
 // list.preppend('hamster')
 // list.size()
@@ -150,3 +150,5 @@ console.log(list.toString());
 // list.toString()
 // list.insertAt('wolf', 3)
 // list.removeAt(2)
+
+export default LinkedList;
