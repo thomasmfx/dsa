@@ -15,7 +15,7 @@ function capacity(arr) {
 
 function loadFactor(arr) {
   let mapSize = capacity(arr);
-  let factor = 0.8;
+  let factor = 0.75;
 
   let entries = 0;
   for (let i = 0; i < mapSize; i++) {
@@ -48,12 +48,26 @@ class HashMap {
   set(key, value) {
     let hashCode = this.hash(key);
     this.map[hashCode].append(createNode(key, value));
+    loadFactor(this.map)
   }
 }
 
 const test = new HashMap();
-test.set('Carlos', 'Smith')
-test.set('Jão', 'Balão')
+test.set('apple', 'red')
+test.set('banana', 'yellow')
+test.set('carrot', 'orange')
+test.set('dog', 'brown')
+test.set('elephant', 'gray')
+test.set('frog', 'green')
+test.set('grape', 'purple')
+test.set('hat', 'black')
+test.set('ice cream', 'white')
+test.set('jacket', 'blue')
+test.set('kite', 'pink')
+test.set('lion', 'golden')
+
 console.log(test.map)
-// console.log(test.map[0])
-// console.log(test.map)
+
+// console.log(test.map[11])
+// console.log(test.map[12])
+
