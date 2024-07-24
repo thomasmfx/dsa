@@ -119,6 +119,21 @@ class HashMap {
 
     return false;
   }
+
+  length() {
+    let list = this.map;
+    let count = 0;
+    
+    for (let i = 0; i < capacity(list); i++) {
+      let current = list[i].head;
+      while(current != null) {
+        count++;
+        current = current.next;
+      }
+    }
+
+    return count;
+  }
 }
 
 const test = new HashMap();
@@ -135,7 +150,8 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 // test.set('moon', 'silver')
-console.log(test.map[12])
-console.log(test.remove('dog'))
-console.log(test.remove('jão'))
-console.log(test.map[12])
+// console.log(test.map)
+console.log(test.length())
+// console.log(test.remove('dog'))
+// console.log(test.remove('jão'))
+// console.log(test.map[12])
