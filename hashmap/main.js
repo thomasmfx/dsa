@@ -13,18 +13,22 @@ function capacity(arr) {
   return arr.length;
 }
 
-function loadFactor(arr) {
+function isFull(arr) {
   let mapSize = capacity(arr);
-  let factor = 0.75;
-
+  let loadFactor = 0.75;
+  
   let entries = 0;
   for (let i = 0; i < mapSize; i++) {
-    if (arr[i].head) {
+    if (arr[i].head != null) {
       entries++;
     } 
   }
   
-  if (entries > mapSize * factor) return generateBuckets(arr);
+  if(entries > (mapSize * loadFactor)) {
+    return true;
+  } else {
+    return false
+  }
 }
 
 class HashMap {
@@ -46,9 +50,27 @@ class HashMap {
   }
 
   set(key, value) {
-    let hashCode = this.hash(key);
-    this.map[hashCode].append(createNode(key, value));
-    loadFactor(this.map)
+    let node = createNode(key, value)
+    let bucket = this.hash(key);
+    this.map[bucket].append(node);
+    if (isFull(this.map)) {
+      generateBuckets(this.map);
+    }
+  }
+
+  get(key) {
+    let bucket = this.hash(key);
+    let list = this.map[bucket];
+    let current = list.head;
+
+    while (current != null) {
+      if (current.key === key) {
+        return current.value;
+      }
+      current = current.next;
+    }
+
+    return null;
   }
 }
 
@@ -65,9 +87,9 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
-
+// test.set('moon', 'silver')
 console.log(test.map)
 
+// console.log(test.map[1])
 // console.log(test.map[11])
 // console.log(test.map[12])
-
