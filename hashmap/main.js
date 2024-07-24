@@ -5,7 +5,7 @@ function generateBuckets(arr) {
   if (mapSize === 0) mapSize = 16;
 
   for(let i = 0; i < mapSize; i++) {
-    arr.push(new LinkedList);
+    arr.push(new LinkedList());
   }
 }
 
@@ -103,7 +103,7 @@ class HashMap {
           current.next = current.next.next;
         } else {
           // Turn into a new LinkedList to remove head
-          list[i] = new LinkedList;
+          list[i] = new LinkedList();
         }
         return true;
       }
@@ -123,7 +123,7 @@ class HashMap {
   length() {
     let list = this.map;
     let count = 0;
-    
+
     for (let i = 0; i < capacity(list); i++) {
       let current = list[i].head;
       while(current != null) {
@@ -133,6 +133,12 @@ class HashMap {
     }
 
     return count;
+  }
+
+  clear() {
+    for (let i = 0; i < capacity(this.map); i++) {
+      this.map[i] = new LinkedList();
+    }
   }
 }
 
@@ -150,8 +156,10 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 // test.set('moon', 'silver')
-// console.log(test.map)
-console.log(test.length())
+console.log(test.map)
+test.clear();
+console.log(test.map)
+// console.log(test.length())
 // console.log(test.remove('dog'))
 // console.log(test.remove('jão'))
 // console.log(test.map[12])
