@@ -76,11 +76,41 @@ class HashMap {
   has(key) {
     let list = this.map;
 
-    for(let i = 0; i < capacity(list); i++) {
+    for (let i = 0; i < capacity(list); i++) {
       let current = list[i].head;
 
       while (current != null) {
-        if (current.key === key) {
+        if (current.key === key)  return true; 
+        current = current.next;
+      }
+    }
+
+    return false;
+  }
+
+  remove(key) {
+    let list = this.map;
+
+    for (let i = 0; i < capacity(list); i++) {
+      let current = list[i].head;
+      // If there is no value in head, current = null, so the while loop don't start
+      if (current == null) current = list[i]; 
+      // If the key is in the head, head  is removed (and turns into next node)
+      if (current.key === key) {
+        if (current.next != null) {
+          current.key = current.next.key;
+          current.value = current.next.value;
+          current.next = current.next.next;
+        } else {
+          // Turn into a new LinkedList to remove head
+          list[i] = new LinkedList;
+        }
+        return true;
+      }
+
+      while (current.next != null) {
+        if (current.next.key === key) {
+          current.next = current.next.next;
           return true;
         }
         current = current.next;
@@ -105,9 +135,7 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 // test.set('moon', 'silver')
-console.log(test.map)
-console.log(test.has('ice cream'))
-
-// console.log(test.map[1])
-// console.log(test.map[11])
-// console.log(test.map[12])
+console.log(test.map[12])
+console.log(test.remove('dog'))
+console.log(test.remove('jão'))
+console.log(test.map[12])
