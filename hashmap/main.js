@@ -144,6 +144,7 @@ class HashMap {
   keys() {
     let list = this.map;
     let keysArr = [];
+
     for (let i = 0; i < capacity(list); i++) {
       let current = list[i].head;
       while (current != null) {
@@ -153,6 +154,21 @@ class HashMap {
     }
 
     return keysArr;
+  }
+
+  values() {
+    let list = this.map;
+    let valuesArr = [];
+
+    for (let i = 0; i < capacity(list); i++) {
+     let current = list[i].head;
+     while (current != null) {
+      valuesArr.push(current.value);
+      current = current.next;
+     }
+    }
+
+    return valuesArr;
   }
 }
 
@@ -171,7 +187,7 @@ test.set('kite', 'pink')
 test.set('lion', 'golden')
 // test.set('moon', 'silver')
 console.log(test.map)
-console.log(test.keys())
+console.log(test.values())
 // console.log(test.length())
 // console.log(test.remove('dog'))
 // console.log(test.remove('jão'))
