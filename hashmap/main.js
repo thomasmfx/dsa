@@ -72,6 +72,23 @@ class HashMap {
 
     return null;
   }
+
+  has(key) {
+    let list = this.map;
+
+    for(let i = 0; i < capacity(list); i++) {
+      let current = list[i].head;
+
+      while (current != null) {
+        if (current.key === key) {
+          return true;
+        }
+        current = current.next;
+      }
+    }
+
+    return false;
+  }
 }
 
 const test = new HashMap();
@@ -89,6 +106,7 @@ test.set('kite', 'pink')
 test.set('lion', 'golden')
 // test.set('moon', 'silver')
 console.log(test.map)
+console.log(test.has('ice cream'))
 
 // console.log(test.map[1])
 // console.log(test.map[11])
