@@ -170,6 +170,21 @@ class HashMap {
 
     return valuesArr;
   }
+
+  entries() {
+    let list = this.map;
+    let entriesArr = [];
+
+    for (let i = 0; i < capacity(list); i++) {
+      let current = list[i].head;
+      while (current != null) {
+        entriesArr.push([current.key, current.value]);
+        current = current.next;
+      }
+    }
+
+    return entriesArr;
+  }
 }
 
 const test = new HashMap();
@@ -187,7 +202,7 @@ test.set('kite', 'pink')
 test.set('lion', 'golden')
 // test.set('moon', 'silver')
 console.log(test.map)
-console.log(test.values())
+console.log(test.entries())
 // console.log(test.length())
 // console.log(test.remove('dog'))
 // console.log(test.remove('jão'))
