@@ -14,12 +14,15 @@ class LinkedList {
 
   append(node) {
     if (this.head == null) return this.head = node;
-
     let current = this.head;
-    while (current.next != null) {
+    if (current == null) return current = node;
+
+    while (current != null) {
+      if (current.key === node.key) return current.value = node.value;
       current = current.next;
-    };
-    current.next = node
+    }
+
+    current = node;
   };
 
   preppend(node) {
