@@ -50,11 +50,25 @@ class LinkedList {
   };
 
   pop() {
-    let current = this.head;
-    while (current.next.next != null) {
-      current = current.next;
-    };
-    current.next = null;
+    // If there is only one node in the list (the head) then just pop it, because it can't acces the 'next' of null
+    if (this.head.next == null) {
+      this.head = null;
+      return;
+    } 
+ 
+    // Since it can't turn the last object into null while accessing it, i turn the 'next' node
+    // of the penultimate node into null, i.e the last object
+
+    const iterate = (current) => {
+      if (current.next.next == null) {
+        current.next = null;
+      } else {
+        return iterate(current.next)
+      }
+      
+    }
+
+    return iterate(this.head);
   };
 
   contains(value) {
@@ -136,12 +150,15 @@ class LinkedList {
 
 const list = new LinkedList();
 
-list.append("dog");
 list.append("cat");
+list.append("dog");
 list.preppend("parrot");
 // list.append("hamster");
 // list.append("snake");
 // list.append("turtle");
+console.log(list.pop());
+console.log(list.pop());
+console.log(list.pop());
 console.log(list);
 // console.log(list.at(0));
 // console.log(list.at(1));
