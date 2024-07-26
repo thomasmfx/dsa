@@ -1,20 +1,18 @@
 function createNode(value) {
-  return { value, next: null };
+  return { value: value, next: null };
 };
 
 class LinkedList {
   constructor() {
-    this.head = null;
+    this.head = createNode(null);
   };
 
-  append(value) {
-    if (this.head == null) return this.head = createNode(value);
+  append(value, current = this.head) {
+    if (this.head.value == null) return Object.assign(this.head, createNode(value));
 
-    let current = this.head;
-    while (current.next != null) {
-      current = current.next;
-    };
-    current.next = createNode(value);
+    current.next == null
+    ? current.next = createNode(value)
+    : this.append(value, current.next);
   };
 
   preppend(value) {
@@ -23,14 +21,10 @@ class LinkedList {
     this.head = node;
   };
   
-  size() {
-    let current = this.head;
-    let i = 0;
-    while (current.next != null) {
-      current = current.next;
-      i++;
-    };
-    return i;
+  size(current = this.head) {
+    return current != null
+    ? 1 + this.size(current.next)
+    : 0
   };
 
   at(index) {
@@ -133,11 +127,11 @@ const list = new LinkedList();
 
 list.append("dog");
 list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-console.log(list.toString());
+// list.append("parrot");
+// list.append("hamster");
+// list.append("snake");
+// list.append("turtle");
+console.log(list.size());
 
 // list.preppend('hamster')
 // list.size()
