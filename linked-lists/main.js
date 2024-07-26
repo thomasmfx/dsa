@@ -17,7 +17,7 @@ class LinkedList {
 
   preppend(value) {
     let node = createNode(value);
-    node.next = this.head;
+    node.next = this.head
     this.head = node;
   };
   
@@ -127,11 +127,11 @@ const list = new LinkedList();
 
 list.append("dog");
 list.append("cat");
-// list.append("parrot");
+list.preppend("parrot");
 // list.append("hamster");
 // list.append("snake");
 // list.append("turtle");
-console.log(list.size());
+console.log(list);
 
 // list.preppend('hamster')
 // list.size()
