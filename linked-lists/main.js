@@ -14,7 +14,7 @@ class LinkedList {
       current.next == null
       ? current.next = createNode(value)
       : iterate(current.next);
-    }
+    };
 
     return iterate(this.head);
   };
@@ -31,11 +31,11 @@ class LinkedList {
         return 0;
       } else {
         return 1 + iterate(current.next);
-      }
-    }
+      };
+    };
 
     return iterate(this.head);
-  }
+  };
 
   at(index) {
     const iterate = (current, counter) => {
@@ -43,8 +43,8 @@ class LinkedList {
         return current;
       } else {
         return iterate(current.next, counter + 1);
-      }
-    }
+      };
+    };
 
     return iterate(this.head, 0);
   };
@@ -54,19 +54,17 @@ class LinkedList {
     if (this.head.next == null) {
       this.head = null;
       return;
-    } 
+    };
  
     // Since it can't turn the last object into null while accessing it, i turn the 'next' node
     // of the penultimate node into null, i.e the last object
-
     const iterate = (current) => {
       if (current.next.next == null) {
         current.next = null;
       } else {
-        return iterate(current.next)
-      }
-      
-    }
+        return iterate(current.next);
+      };
+    };
 
     return iterate(this.head);
   };
@@ -116,14 +114,15 @@ class LinkedList {
 
   insertAt(value, index) {
     let node = createNode(value);
+
     if (index === 0) {
       node.next = this.head;
       this.head = node;
       return;
-    }
+    };
+
     let current = this.head;
     let i = 0;
-
     while (current.next != null) {
       i++;
       if (i === index) {
@@ -141,16 +140,16 @@ class LinkedList {
     if (index === 0) {
       this.head = this.head.next;
       return;
-    }
+    };
+
     let current = this.head;
     let i = 0;
-
     while (current.next != null) {
       i++;
       if (i === index) {
         current.next = current.next.next;
         return;
-      } 
+      };
       current = current.next;
     };
 
