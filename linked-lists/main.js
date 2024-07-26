@@ -77,6 +77,7 @@ class LinkedList {
       if (current.value === value) return true;
       current = current.next;
     };
+
     return false;
   };
 
@@ -115,6 +116,11 @@ class LinkedList {
 
   insertAt(value, index) {
     let node = createNode(value);
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+      return;
+    }
     let current = this.head;
     let i = 0;
 
@@ -132,6 +138,10 @@ class LinkedList {
   };
 
   removeAt(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
     let current = this.head;
     let i = 0;
 
@@ -150,19 +160,15 @@ class LinkedList {
 
 const list = new LinkedList();
 
-list.append("cat");
+list.append("balao");
 list.append("dog");
-list.preppend("parrot");
-// list.append("hamster");
-// list.append("snake");
-// list.append("turtle");
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list);
-// console.log(list.at(0));
-// console.log(list.at(1));
-// console.log(list.head);
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+
+console.log(list.toString());
 
 // list.preppend('hamster')
 // list.size()
