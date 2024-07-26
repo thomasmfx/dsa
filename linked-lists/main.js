@@ -22,20 +22,12 @@ class LinkedList {
   };
   
   size(current = this.head) {
-    return current != null
-    ? 1 + this.size(current.next)
-    : 0
+    return current != null ? 1 + this.size(current.next) : 0;
   };
 
-  at(index) {
-    let i = 0;
-    let current = this.head;
-    while (current != null) {
-      if(i === index) return current.value;
-      i++;
-      current = current.next;
-    };
-    return null;
+  at(index, current = this.head) {
+    if (index === 0) return current;
+    return this.at(index - 1, current.next)
   };
 
   pop() {
@@ -131,7 +123,7 @@ list.preppend("parrot");
 // list.append("hamster");
 // list.append("snake");
 // list.append("turtle");
-console.log(list);
+console.log(list.at(3));
 
 // list.preppend('hamster')
 // list.size()
