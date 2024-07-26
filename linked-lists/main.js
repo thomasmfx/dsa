@@ -117,11 +117,11 @@ class LinkedList {
     let i = 0;
 
     while (current.next != null) {
-      i++;
       if (i === index) {
         current.next = current.next.next;
         return;
       } 
+      i++;
       current = current.next;
     };
 
@@ -137,7 +137,9 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-// console.log(list.toString());
+console.log(list.toString());
+list.removeAt(0)
+console.log(list.toString());
 
 // list.preppend('hamster')
 // list.size()

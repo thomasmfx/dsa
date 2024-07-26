@@ -15,14 +15,17 @@ class LinkedList {
   append(node) {
     if (this.head == null) return this.head = node;
     let current = this.head;
-    if (current == null) return current = node;
 
-    while (current != null) {
-      if (current.key === node.key) return current.value = node.value;
-      current = current.next;
+    while (current.next != null) {
+      if (current.key === node.key) {
+        current.value = node.value;
+        return;
+      } else {
+        current = current.next;
+      }
     }
 
-    current = node;
+    current.next = node;
   };
 
   preppend(node) {
@@ -44,7 +47,7 @@ class LinkedList {
     let i = 0;
     let current = this.head;
     while (current != null) {
-      if(i === index) return current.node;
+      if(i === index) return current.key;
       i++;
       current = current.next;
     };
@@ -68,11 +71,14 @@ class LinkedList {
     return false;
   };
 
-  find(node) {
+  find(key) {
     let current = this.head;
     let i = 0;
     while (current != null) {
-      if (current.node === node) return i;
+      if (current.key === key)  {
+        console.log(i)
+        return i;
+      }
       current = current.next;
       i++;
     };
@@ -122,16 +128,23 @@ class LinkedList {
     let current = this.head;
     let i = 0;
 
-    while (current.next != null) {
-      i++;
-      if (i === index) {
-        current.next = current.next.next;
-        return;
-      } 
-      current = current.next;
+    while (current != null) {
+      let current = this.head;
+      let i = 0;
+  
+      while (current.next != null) {
+        if (i === index) {
+          console.log('BEFORE: ', this)
+          current.next = current.next.next;
+          console.log('AFTER: ', this)
+          return;
+        } 
+        i++;
+        current = current.next;
+      };
+  
+      return null;
     };
-
-    return null;
   };
 };
 
