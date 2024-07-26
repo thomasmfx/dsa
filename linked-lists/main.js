@@ -7,27 +7,46 @@ class LinkedList {
     this.head = createNode(null);
   };
 
-  append(value, current = this.head) {
-    if (this.head.value == null) return Object.assign(this.head, createNode(value));
+  append(value) {
+    if (this.head.value == null) return this.head = createNode(value);
 
-    current.next == null
-    ? current.next = createNode(value)
-    : this.append(value, current.next);
+    const iterate = (current) => {
+      current.next == null
+      ? current.next = createNode(value)
+      : iterate(current.next);
+    }
+
+    return iterate(this.head);
   };
 
   preppend(value) {
     let node = createNode(value);
-    node.next = this.head
+    node.next = this.head;
     this.head = node;
   };
-  
-  size(current = this.head) {
-    return current != null ? 1 + this.size(current.next) : 0;
-  };
 
-  at(index, current = this.head) {
-    if (index === 0) return current;
-    return this.at(index - 1, current.next)
+  size() {
+    const iterate = (current) => {
+      if (current == null) {
+        return 0;
+      } else {
+        return 1 + iterate(current.next);
+      }
+    }
+
+    return iterate(this.head);
+  }
+
+  at(index) {
+    const iterate = (current, counter) => {
+      if (counter === index ) {
+        return current;
+      } else {
+        return iterate(current.next, counter + 1);
+      }
+    }
+
+    return iterate(this.head, 0);
   };
 
   pop() {
@@ -123,7 +142,10 @@ list.preppend("parrot");
 // list.append("hamster");
 // list.append("snake");
 // list.append("turtle");
-console.log(list.at(3));
+console.log(list);
+// console.log(list.at(0));
+// console.log(list.at(1));
+// console.log(list.head);
 
 // list.preppend('hamster')
 // list.size()
