@@ -11,6 +11,7 @@ class LinkedList {
     if (this.head.value == null) return this.head = node;
 
     const iterate = (current) => {
+      if (current.key === node.key) return current.value = node.value;
       current.next == null
       ? current.next = node
       : iterate(current.next);
@@ -26,15 +27,17 @@ class LinkedList {
   };
 
   size() {
-    const iterate = (current) => {
-      if (current == null) {
-        return 0;
-      } else {
-        return 1 + iterate(current.next);
-      };
-    };
+    let count = 0;
+    let current = this.head;
 
-    return iterate(this.head);
+    while (current != null) {
+      if (current.key) {
+        count += 1;
+      }
+      current = current.next;
+    }
+
+    return count;
   };
 
   at(index) {
