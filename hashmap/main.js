@@ -23,12 +23,8 @@ function isFull(arr) {
       entries++;
     } 
   }
-  
-  if(entries > (mapSize * loadFactor)) {
-    return true;
-  } else {
-    return false
-  }
+
+  if (entries > (mapSize * loadFactor)) return true;
 }
 
 class HashMap {
@@ -54,9 +50,9 @@ class HashMap {
     let node = createNode(key, value)
     let bucket = this.hash(key);
     list[bucket].append(node);
-    if (isFull(this.map)) {
-      generateBuckets(this.map);
-    }
+    // if (isFull(this.map)) {
+    //   generateBuckets(this.map);
+    // }
   }
 
   get(key) {
@@ -92,10 +88,7 @@ class HashMap {
 
   remove(key) {
     let bucket = this.map[this.hash(key)];
-    let index = bucket.find(key)
-    // console.log(bucket.at(index))
-    // bucket.removeAt(index)
-    bucket.removeAt(index)
+    bucket.removeAt(bucket.find(key));
   } 
 
   length() {
@@ -178,11 +171,13 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
-test.set('moon', 'silver')
+// test.set('moon', 'silver')
 
-// console.log(test.map)
 test.remove('lion')
 test.remove('kite')
+console.log(test.map)
+// test.remove('lion')
+// test.remove('kite')
 // console.log(test.map)
 // console.log(test.length())
 // console.log(test.remove('dog'))

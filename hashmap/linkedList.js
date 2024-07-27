@@ -1,18 +1,18 @@
-function createNode(value) {
-  return { value: value, next: null };
+function createNode(key = null, value = null) {
+  return { key: key, value: value, next: null };
 };
 
 class LinkedList {
   constructor() {
-    this.head = createNode(null);
+    this.head = createNode();
   };
 
-  append(value) {
-    if (this.head.value == null) return this.head = createNode(value);
+  append(node) {
+    if (this.head.value == null) return this.head = node;
 
     const iterate = (current) => {
       current.next == null
-      ? current.next = createNode(value)
+      ? current.next = node
       : iterate(current.next);
     };
 
@@ -38,11 +38,11 @@ class LinkedList {
   };
 
   at(index) {
-    const iterate = (current, counter) => {
-      if (counter === index ) {
+    const iterate = (current, count) => {
+      if (count === index ) {
         return current;
       } else {
-        return iterate(current.next, counter + 1);
+        return iterate(current.next, count + 1);
       };
     };
 
@@ -79,15 +79,17 @@ class LinkedList {
     return false;
   };
 
-  find(value) {
-    let current = this.head;
-    let i = 0;
-    while (current != null) {
-      if (current.value === value) return i;
-      current = current.next;
-      i++;
+  find(key) {
+    const iterate = (current, count) => {
+      if (current.key === key) {
+        // console.log(count);
+        return count;
+      } else {
+        return iterate(current.next, count + 1);
+      };
     };
-    return null;
+
+    return iterate(this.head, 0)
   };
 
   getHead() {
@@ -112,73 +114,23 @@ class LinkedList {
     return string += 'null';
   };
 
-  insertAt(value, index) {
-    let node = createNode(value);
-
-    if (index === 0) {
-      node.next = this.head;
-      this.head = node;
-      return;
-    };
-
-    let current = this.head;
-    let i = 0;
-    while (current.next != null) {
-      i++;
-      if (i === index) {
-        node.next = current.next;
-        current.next = node;
-        return;
-      };
-      current = current.next;
-    };
-
-    return null;
-  };
-
   removeAt(index) {
-    if (index === 0) {
-      this.head = this.head.next;
-      return;
-    };
-
-    let current = this.head;
-    let i = 0;
-    while (current.next != null) {
-      if (i === index) {
-        current.next = current.next.next;
-        return;
+    const iterate = (current, count) => {
+      if (count === index) {
+        return Object.assign(current, createNode(current.next));
+      } else {
+        current.next != null
+        ? iterate(current.next, count + 1)
+        : null;
       };
-      i++;
-      current = current.next;
     };
 
-    return null;
+    return iterate(this.head, 0);
   };
 };
 
-const list = new LinkedList();
+// const test = new LinkedList();
+// console.log(test);
 
-list.append("balao");
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
+export { LinkedList, createNode };
 
-console.log(list.toString());
-list.removeAt(0)
-console.log(list.toString());
-
-// list.preppend('hamster')
-// list.size()
-// list.getHead()
-// list.tail()
-// list.at(1)
-// list.pop()
-// list.contains('cat')
-// list.find('parrot')
-// list.toString()
-// list.insertAt('wolf', 3)
-// list.removeAt(2)
