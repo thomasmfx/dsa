@@ -1,20 +1,22 @@
 function createNode(value) {
-  return { value, next: null };
+  return { value: value, next: null };
 };
 
 class LinkedList {
   constructor() {
-    this.head = null;
+    this.head = createNode(null);
   };
 
   append(value) {
-    if (this.head == null) return this.head = createNode(value);
+    if (this.head.value == null) return this.head = createNode(value);
 
-    let current = this.head;
-    while (current.next != null) {
-      current = current.next;
+    const iterate = (current) => {
+      current.next == null
+      ? current.next = createNode(value)
+      : iterate(current.next);
     };
-    current.next = createNode(value);
+
+    return iterate(this.head);
   };
 
   preppend(value) {
@@ -22,34 +24,49 @@ class LinkedList {
     node.next = this.head;
     this.head = node;
   };
-  
+
   size() {
-    let current = this.head;
-    let i = 0;
-    while (current.next != null) {
-      current = current.next;
-      i++;
+    const iterate = (current) => {
+      if (current == null) {
+        return 0;
+      } else {
+        return 1 + iterate(current.next);
+      };
     };
-    return i;
+
+    return iterate(this.head);
   };
 
   at(index) {
-    let i = 0;
-    let current = this.head;
-    while (current != null) {
-      if(i === index) return current.value;
-      i++;
-      current = current.next;
+    const iterate = (current, counter) => {
+      if (counter === index ) {
+        return current;
+      } else {
+        return iterate(current.next, counter + 1);
+      };
     };
-    return null;
+
+    return iterate(this.head, 0);
   };
 
   pop() {
-    let current = this.head;
-    while (current.next.next != null) {
-      current = current.next;
+    // If there is only one node in the list (the head) then just pop it, because it can't acces the 'next' of null
+    if (this.head.next == null) {
+      this.head = null;
+      return;
     };
-    current.next = null;
+ 
+    // Since it can't turn the last object into null while accessing it, i turn the 'next' node
+    // of the penultimate node into null, i.e the last object
+    const iterate = (current) => {
+      if (current.next.next == null) {
+        current.next = null;
+      } else {
+        return iterate(current.next);
+      };
+    };
+
+    return iterate(this.head);
   };
 
   contains(value) {
@@ -58,6 +75,7 @@ class LinkedList {
       if (current.value === value) return true;
       current = current.next;
     };
+
     return false;
   };
 
@@ -96,9 +114,15 @@ class LinkedList {
 
   insertAt(value, index) {
     let node = createNode(value);
+
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+      return;
+    };
+
     let current = this.head;
     let i = 0;
-
     while (current.next != null) {
       i++;
       if (i === index) {
@@ -113,14 +137,18 @@ class LinkedList {
   };
 
   removeAt(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    };
+
     let current = this.head;
     let i = 0;
-
     while (current.next != null) {
       if (i === index) {
         current.next = current.next.next;
         return;
-      } 
+      };
       i++;
       current = current.next;
     };
@@ -131,12 +159,14 @@ class LinkedList {
 
 const list = new LinkedList();
 
+list.append("balao");
 list.append("dog");
 list.append("cat");
 list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
+
 console.log(list.toString());
 list.removeAt(0)
 console.log(list.toString());
