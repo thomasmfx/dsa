@@ -182,5 +182,3 @@ console.log(list.toString());
 // list.toString()
 // list.insertAt('wolf', 3)
 // list.removeAt(2)
-
-export default LinkedList;

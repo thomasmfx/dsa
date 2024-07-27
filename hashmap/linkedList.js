@@ -1,84 +1,89 @@
-function createNode(key, value) {
-  let node = {
-    key: key,
-    value: value,
-    next: null
-  }
-  return node;
-}
+function createNode(value) {
+  return { value: value, next: null };
+};
 
 class LinkedList {
   constructor() {
-    this.head = null;
+    this.head = createNode(null);
   };
 
-  append(node) {
-    if (this.head == null) return this.head = node;
-    let current = this.head;
+  append(value) {
+    if (this.head.value == null) return this.head = createNode(value);
 
-    while (current.next != null) {
-      if (current.key === node.key) {
-        current.value = node.value;
-        return;
-      } else {
-        current = current.next;
-      }
-    }
+    const iterate = (current) => {
+      current.next == null
+      ? current.next = createNode(value)
+      : iterate(current.next);
+    };
 
-    current.next = node;
+    return iterate(this.head);
   };
 
-  preppend(node) {
+  preppend(value) {
+    let node = createNode(value);
     node.next = this.head;
     this.head = node;
   };
-  
+
   size() {
-    let current = this.head;
-    let i = 0;
-    while (current.next != null) {
-      current = current.next;
-      i++;
+    const iterate = (current) => {
+      if (current == null) {
+        return 0;
+      } else {
+        return 1 + iterate(current.next);
+      };
     };
-    return i;
+
+    return iterate(this.head);
   };
 
   at(index) {
-    let i = 0;
-    let current = this.head;
-    while (current != null) {
-      if(i === index) return current.key;
-      i++;
-      current = current.next;
+    const iterate = (current, counter) => {
+      if (counter === index ) {
+        return current;
+      } else {
+        return iterate(current.next, counter + 1);
+      };
     };
-    return null;
+
+    return iterate(this.head, 0);
   };
 
   pop() {
-    let current = this.head;
-    while (current.next.next != null) {
-      current = current.next;
+    // If there is only one node in the list (the head) then just pop it, because it can't acces the 'next' of null
+    if (this.head.next == null) {
+      this.head = null;
+      return;
     };
-    current.next = null;
+ 
+    // Since it can't turn the last object into null while accessing it, i turn the 'next' node
+    // of the penultimate node into null, i.e the last object
+    const iterate = (current) => {
+      if (current.next.next == null) {
+        current.next = null;
+      } else {
+        return iterate(current.next);
+      };
+    };
+
+    return iterate(this.head);
   };
 
-  contains(node) {
+  contains(value) {
     let current = this.head;
     while (current != null) {
-      if (current.node === node) return true;
+      if (current.value === value) return true;
       current = current.next;
     };
+
     return false;
   };
 
-  find(key) {
+  find(value) {
     let current = this.head;
     let i = 0;
     while (current != null) {
-      if (current.key === key)  {
-        console.log(i)
-        return i;
-      }
+      if (current.value === value) return i;
       current = current.next;
       i++;
     };
@@ -86,7 +91,7 @@ class LinkedList {
   };
 
   getHead() {
-    return this.head.node;
+    return this.head.value;
   };
 
   tail() {
@@ -94,23 +99,30 @@ class LinkedList {
     while (current.next != null) {
       current = current.next;
     };
-    return current.node;
+    return current.value;
   };
 
   toString() {
     let string = '';
     let current = this.head;
     while (current != null) {
-      string += `( ${current.node} ) -> `;
+      string += `( ${current.value} ) -> `;
       current = current.next;
     };
     return string += 'null';
   };
 
-  insertAt(node, index) {
+  insertAt(value, index) {
+    let node = createNode(value);
+
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+      return;
+    };
+
     let current = this.head;
     let i = 0;
-
     while (current.next != null) {
       i++;
       if (i === index) {
@@ -125,27 +137,48 @@ class LinkedList {
   };
 
   removeAt(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    };
+
     let current = this.head;
     let i = 0;
-
-    while (current != null) {
-      let current = this.head;
-      let i = 0;
-  
-      while (current.next != null) {
-        if (i === index) {
-          console.log('BEFORE: ', this)
-          current.next = current.next.next;
-          console.log('AFTER: ', this)
-          return;
-        } 
-        i++;
-        current = current.next;
+    while (current.next != null) {
+      if (i === index) {
+        current.next = current.next.next;
+        return;
       };
-  
-      return null;
+      i++;
+      current = current.next;
     };
+
+    return null;
   };
 };
 
-export { LinkedList, createNode }
+const list = new LinkedList();
+
+list.append("balao");
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+
+console.log(list.toString());
+list.removeAt(0)
+console.log(list.toString());
+
+// list.preppend('hamster')
+// list.size()
+// list.getHead()
+// list.tail()
+// list.at(1)
+// list.pop()
+// list.contains('cat')
+// list.find('parrot')
+// list.toString()
+// list.insertAt('wolf', 3)
+// list.removeAt(2)
