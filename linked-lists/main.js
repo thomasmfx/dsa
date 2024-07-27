@@ -103,6 +103,8 @@ class LinkedList {
   };
 
   toString() {
+    if (this.head.value == null) return 'null';
+
     let string = '';
     let current = this.head;
     while (current != null) {
@@ -122,14 +124,14 @@ class LinkedList {
     };
 
     let current = this.head;
-    let i = 0;
+    let i = 1;
     while (current.next != null) {
-      i++;
       if (i === index) {
         node.next = current.next;
         current.next = node;
         return;
       };
+      i++;
       current = current.next;
     };
 
@@ -137,29 +139,27 @@ class LinkedList {
   };
 
   removeAt(index) {
-    if (index === 0) {
-      this.head = this.head.next;
-      return;
+    if (index === 0 && this.head.next == null) {
+      return this.head = createNode(null);
     };
 
-    let current = this.head;
-    let i = 0;
-    while (current.next != null) {
-      if (i === index) {
-        current.next = current.next.next;
-        return;
+    const iterate = (current, count) => {
+      if (index === count) {
+        return Object.assign(current, current.next);
+      } else {
+        current.next != null
+        ? iterate(current.next, count + 1)
+        : null;
       };
-      i++;
-      current = current.next;
     };
 
-    return null;
+    return iterate(this.head, 0);
   };
 };
 
 const list = new LinkedList();
 
-list.append("balao");
+list.append("jao balao");
 list.append("dog");
 list.append("cat");
 list.append("parrot");
@@ -167,8 +167,6 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.toString());
-list.removeAt(0)
 console.log(list.toString());
 
 // list.preppend('hamster')
