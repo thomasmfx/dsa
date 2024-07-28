@@ -1,17 +1,8 @@
 import { LinkedList, createNode } from "./linkedList.js";
 
-function generateBuckets(arr) {
-  let mapSize = capacity(arr);
-  if (mapSize === 0) mapSize = 16;
-
-  for(let i = 0; i < mapSize; i++) {
-    arr.push(new LinkedList());
-  }
-}
-
 function capacity(arr) {
   return arr.length;
-}
+};
 
 function isFull(arr) {
   let mapSize = capacity(arr);
@@ -19,19 +10,26 @@ function isFull(arr) {
   
   let entries = 0;
   for (let i = 0; i < mapSize; i++) {
-    if (arr[i].head != null) {
-      entries++;
-    } 
-  }
+    entries += arr[i].size();
+  };
 
   if (entries > (mapSize * loadFactor)) return true;
-}
+};
+
+function generateBuckets(arr) {
+  let mapSize = capacity(arr);
+  if (mapSize === 0) mapSize = 16;
+
+  for(let i = 0; i < mapSize; i++) {
+    arr.push(new LinkedList());
+  };
+};
 
 class HashMap {
   constructor() {
     this.map = [];
     generateBuckets(this.map);
-  }
+  };
 
   hash(key) {
     let hashCode = 0;
@@ -40,20 +38,20 @@ class HashMap {
     const primeNumber = 31;
     for (let i = 0; i < key.length; i++) {
       hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % mapSize;
-    }
+    };
   
     return hashCode;
-  }
+  };
 
   set(key, value) {
     let list = this.map;
-    let node = createNode(key, value)
+    let node = createNode(key, value);
     let bucket = this.hash(key);
     list[bucket].append(node);
-    // if (isFull(this.map)) {
-    //   generateBuckets(this.map);
-    // }
-  }
+    if (isFull(this.map)) {
+      generateBuckets(this.map);
+    };
+  };
 
   get(key) {
     let bucket = this.hash(key);
@@ -65,11 +63,11 @@ class HashMap {
         return current.value;
       } else {
         current = current.next;
-      }
-    }
+      };
+    };
 
     return null;
-  }
+  };
 
   has(key) {
     let list = this.map;
@@ -80,16 +78,16 @@ class HashMap {
       while (current != null) {
         if (current.key === key)  return true; 
         current = current.next;
-      }
-    }
+      };
+    };
 
     return false;
-  }
+  };
 
   remove(key) {
     let bucket = this.map[this.hash(key)];
     bucket.removeAt(bucket.find(key));
-  } 
+  };
 
   length() {
     let list = this.map;
@@ -98,7 +96,9 @@ class HashMap {
     for (let i = 0; i < capacity(list); i++) {
       let current = list[i].head;
       while(current != null) {
-        count++;
+        if (current.key) {
+          count += 1;
+        }
         current = current.next;
       }
     }
@@ -109,8 +109,8 @@ class HashMap {
   clear() {
     for (let i = 0; i < capacity(this.map); i++) {
       this.map[i] = new LinkedList();
-    }
-  }
+    };
+  };
 
   keys() {
     let list = this.map;
@@ -119,13 +119,15 @@ class HashMap {
     for (let i = 0; i < capacity(list); i++) {
       let current = list[i].head;
       while (current != null) {
-        keysArr.push(current.key);
+        if (current.key){
+          keysArr.push(current.key);
+        }
         current = current.next;
-      }
-    }
+      };
+    };
 
     return keysArr;
-  }
+  };
 
   values() {
     let list = this.map;
@@ -134,13 +136,15 @@ class HashMap {
     for (let i = 0; i < capacity(list); i++) {
      let current = list[i].head;
      while (current != null) {
-      valuesArr.push(current.value);
+      if (current.value) {
+        valuesArr.push(current.value);
+      };
       current = current.next;
-     }
-    }
+     };
+    };
 
     return valuesArr;
-  }
+  };
 
   entries() {
     let list = this.map;
@@ -149,16 +153,19 @@ class HashMap {
     for (let i = 0; i < capacity(list); i++) {
       let current = list[i].head;
       while (current != null) {
-        entriesArr.push([current.key, current.value]);
+        if (current.key) {
+          entriesArr.push([current.key, current.value]);
+        }
         current = current.next;
-      }
-    }
+      };
+    };
 
     return entriesArr;
-  }
-}
+  };
+};
 
 const test = new HashMap()
+
 test.set('apple', 'red')
 test.set('banana', 'yellow')
 test.set('carrot', 'orange')
@@ -171,15 +178,22 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
-// test.set('moon', 'silver')
+test.set('moon', 'silver')
 
-test.remove('lion')
-test.remove('kite')
-console.log(test.map)
-// test.remove('lion')
-// test.remove('kite')
-// console.log(test.map)
+// Tests:
+
+// test.set('rico', 'rainbow')
+// test.set('kite', 'blue-gray') - ovewrite existing values
+// console.log(test.get('moon'))
+// console.log(test.has('grape'))
+// test.remove('jacket')
 // console.log(test.length())
-// console.log(test.remove('dog'))
-// console.log(test.remove('jão'))
-// console.log(test.map[12])
+// test.clear()
+// console.log(test.keys())
+// console.log(test.values())
+// console.log(test.entries())
+
+// For methods that don't return anything, check the changes by uncommenting one of these:
+
+// console.log(test.entries())
+// console.log(test.map)
