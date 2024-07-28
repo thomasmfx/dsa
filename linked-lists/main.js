@@ -159,7 +159,6 @@ class LinkedList {
 
 const list = new LinkedList();
 
-list.append("jao balao");
 list.append("dog");
 list.append("cat");
 list.append("parrot");
@@ -167,16 +166,17 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.toString());
+// Tests:
+// ! For methods that don't return anything, check the changes by uncommenting the last test (toString())
 
-// list.preppend('hamster')
-// list.size()
-// list.getHead()
-// list.tail()
-// list.at(1)
+// list.preppend('jao balao')
+// console.log(list.size())
+// console.log(list.getHead())
+// console.log(list.tail())
+// console.log(list.at(3))
 // list.pop()
-// list.contains('cat')
-// list.find('parrot')
-// list.toString()
+// console.log(list.contains('cat'))
+// console.log(list.find('snake'))
 // list.insertAt('wolf', 3)
 // list.removeAt(2)
+// console.log(list.toString());
