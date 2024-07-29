@@ -5,19 +5,17 @@ class Node {
     this.right = null
   };
 
-  getLeft() {
-    return this.left;
-  };
-
-  getRight() {
-    return this.right;
-  };
-
   setLeft(node) {
     this.left = node;
   };
 
   setRight(node) {
     this.right = node;
+  };
+};
+
+class Tree {
+  constructor(arr) {
+    this.root = null;
   };
 };
