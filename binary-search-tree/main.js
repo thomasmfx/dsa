@@ -1,10 +1,10 @@
 import { Node, Tree } from './classes.js';
-
+import formatArray from './formatData.js';
 
 let sample = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
 function buildTree(array) {
-
+  array = formatArray(array)
 };
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {

@@ -25,8 +25,6 @@ function merge(left, right) {
   return sorted;
 };
 
-let sample = mergeSort([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-
 // Acceps a sorted array
 function removeDuplicates(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -38,4 +36,10 @@ function removeDuplicates(arr) {
   return arr;
 };
 
-console.log(removeDuplicates(sample));
+function formatArray(arr) {
+  return removeDuplicates(mergeSort(arr));
+};
+
+// console.log(formatArray([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]));
+
+export default formatArray;
