@@ -1,3 +1,5 @@
+import { buildTree } from './main.js';
+
 class Node {
   constructor(data) {
     this.data = data,
@@ -16,7 +18,7 @@ class Node {
 
 class Tree {
   constructor(arr) {
-    this.root = null;
+    this.root = buildTree(arr);
   };
 };
 
