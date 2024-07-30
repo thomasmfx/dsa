@@ -34,6 +34,11 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 let tree = new Tree(sample);
+// tree.insert(18)
+// tree.insert(20)
+// tree.insert(150)
+// tree.insert(380)
+// tree.insert(7)
 prettyPrint(tree.root);
 
 export { buildTree };
