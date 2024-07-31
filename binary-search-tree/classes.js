@@ -33,7 +33,7 @@ class Node {
     return this.left === null && this.right === null ? true : false;
   };
 
-  hasChildren() {
+  hasBothChildren() {
     return this.left !== null && this.right !== null ? true : false;
   };
 
