@@ -7,10 +7,18 @@ class Node {
     this.right = null
   };
 
+  setData(data) {
+    this.data = data;
+  };
+
   setChild(node) {
     this.data > node.data
     ? this.setLeft(node)
     : this.setRight(node);
+  };
+
+  replace(node) {
+    Object.assign(this, node);
   };
 
   setLeft(node) {
