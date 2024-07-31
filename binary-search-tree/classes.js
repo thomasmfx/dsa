@@ -7,12 +7,34 @@ class Node {
     this.right = null
   };
 
+  setChild(node) {
+    this.data > node.data
+    ? this.setLeft(node)
+    : this.setRight(node);
+  };
+
   setLeft(node) {
     this.left = node;
   };
 
   setRight(node) {
     this.right = node;
+  };
+
+  isLeaf() {
+    return this.left === null && this.right === null ? true : false;
+  };
+
+  hasChildren() {
+    return this.left !== null && this.right !== null ? true : false;
+  };
+
+  hasLeft() {
+    return this.left !== null ? true : false;
+  };
+
+  hasRight() {
+    return this.right !== null ? true : false;
   };
 };
 
@@ -21,23 +43,21 @@ class Tree {
     this.root = buildTree(arr);
   };
 
-  insert(data) {
-    let newNode = new Node(data);
+  insert(value) {
+    let newNode = new Node(value);
 
     const goTo = (currentNode) => {
-      if (currentNode.left === null && currentNode.right === null) {
-        currentNode.data > newNode.data
-        ? currentNode.left = newNode
-        : currentNode.right = newNode;
+      if (currentNode.isLeaf()) {
+        currentNode.setChild(newNode);
       } else {
         if (currentNode.data > newNode.data) {
-          currentNode.left !== null 
+          currentNode.hasLeft() 
           ? goTo(currentNode.left) 
-          : currentNode.left = newNode
+          : currentNode.setLeft(newNode);
         } else {
-          currentNode.right !== null 
+          currentNode.hasRight()
           ? goTo(currentNode.right) 
-          : currentNode.right = newNode;
+          : currentNode.setRight(newNode);
         };
       };
     };
