@@ -21,6 +21,14 @@ class Node {
     this.right = node;
   };
 
+  deleteLeft() {
+    this.left = null;
+  };
+
+  deleteRight() {
+    this.right = null;
+  };
+
   isLeaf() {
     return this.left === null && this.right === null ? true : false;
   };
