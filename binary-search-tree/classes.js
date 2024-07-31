@@ -37,6 +37,13 @@ class Node {
     return this.left !== null && this.right !== null ? true : false;
   };
 
+  hasSingleChild() {
+    if (
+      (this.left !== null && this.right === null)
+      || (this.right !== null && this.left === null)
+    ) return true;
+  }
+
   hasLeft() {
     return this.left !== null ? true : false;
   };
