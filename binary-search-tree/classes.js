@@ -42,7 +42,7 @@ class Node {
       (this.left !== null && this.right === null)
       || (this.right !== null && this.left === null)
     ) return true;
-  }
+  };
 
   hasLeft() {
     return this.left !== null ? true : false;
@@ -58,8 +58,8 @@ class Tree {
     this.root = buildTree(arr);
   };
 
-  insert(value) {
-    let newNode = new Node(value);
+  insert(data) {
+    let newNode = new Node(data);
 
     const goTo = (currentNode) => {
       if (currentNode.isLeaf()) {
@@ -75,6 +75,50 @@ class Tree {
           : currentNode.setRight(newNode);
         };
       };
+    };
+
+    return goTo(this.root);
+  };
+
+  deleteItem(data) {
+    const goTo = (currentNode) => {
+      console.log('Accessing: ', currentNode.data);
+
+      if (currentNode.hasLeft()) {
+        let leftChild = currentNode.left;
+
+        if (leftChild.data === data) {
+          if (leftChild.isLeaf()) {
+            return currentNode.deleteLeft();
+          };
+
+          if (leftChild.hasSingleChild()) {
+            return leftChild.left !== null
+            ? currentNode.setLeft(leftChild.left)
+            : currentNode.setLeft(leftChild.right);
+          };
+        };
+      };
+
+      if (currentNode.hasRight()) {
+        let rightChild = currentNode.right;
+
+        if (rightChild.data === data) {
+          if (rightChild.isLeaf()) {
+            return currentNode.deleteRight();
+          };
+          
+          if (rightChild.hasSingleChild()) {
+            return rightChild.left !== null
+            ? currentNode.setRight(rightChild.left)
+            : currentNode.setRight(rightChild.right);
+          };
+        };
+      };
+
+      return currentNode.data > data
+      ? goTo(currentNode.left)
+      : goTo(currentNode.right);
     };
 
     return goTo(this.root);

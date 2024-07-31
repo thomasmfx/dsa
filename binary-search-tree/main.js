@@ -12,7 +12,7 @@ function buildTree(array) {
   if (start > end) return null;
 
   array = formatArray(array);
-  let node = new Node(array.splice(mid, 1));
+  let node = new Node(array.splice(mid, 1)[0]);
 
   node.setLeft(buildTree(array.slice(start, mid)));
   node.setRight(buildTree(array.slice(mid, end)));
@@ -34,11 +34,13 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 let tree = new Tree(sample);
-// tree.insert(18)
-// tree.insert(20)
-// tree.insert(150)
-// tree.insert(380)
-// tree.insert(7)
+tree.insert(18)
+tree.insert(20)
+tree.insert(150)
+tree.insert(380)
+tree.insert(6)
+// tree.deleteItem(1)
+
 prettyPrint(tree.root);
 
 export { buildTree };
