@@ -167,7 +167,7 @@ class Tree {
   };
 
   levelOrder(callback) {
-    if (callback == undefined) throw new Error('Callback function is required');
+    if (callback == undefined) throw new Error('Callback function is required as a function argument');
 
     let queue = [this.root]; // FIFO
     let callbacked = [];
@@ -195,6 +195,23 @@ class Tree {
   // };
 
   // return callbackOnQueue(queue);
+  };
+
+  inorder(callback) {
+    if (callback == undefined) throw new Error('Callback function is required as a function argument');
+
+    let callbacked = [];
+
+    function inorderTraversal(current) {
+      if (!current) return;
+
+      inorderTraversal(current.left);
+      callbacked.push(callback(current));
+      inorderTraversal(current.right);
+    };
+
+    inorderTraversal(this.root);
+    return callbacked;
   };
 };
 
