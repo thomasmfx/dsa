@@ -155,7 +155,7 @@ class Tree {
   };
 
   find(data) {
-    function goTo(node) {
+    const goTo = (node) => {
       if (node.data === data) return node;
 
       return node.data > data
@@ -164,6 +164,37 @@ class Tree {
     };
 
     return goTo(this.root);
+  };
+
+  levelOrder(callback) {
+    if (callback == undefined) throw new Error('Callback function is required');
+
+    let queue = [this.root]; // FIFO
+    let callbacked = [];
+
+    while (queue.length > 0) {
+      if (queue[0].hasLeft()) queue.push(queue[0].left);
+      if (queue[0].hasRight()) queue.push(queue[0].right);
+
+      callbacked.push(callback(queue.shift()));
+    };
+
+    return callbacked;
+
+  // Recursive version:
+  
+  //   function callbackOnQueue() {
+  //   if (queue.length <= 0) return callbacked;
+
+  //   if (queue[0].hasLeft()) queue.push(queue[0].left);
+  //   if (queue[0].hasRight()) queue.push(queue[0].right);
+
+  //   callbacked.push(callback(queue.shift()));
+
+  //   return callbackOnQueue(queue);
+  // };
+
+  // return callbackOnQueue(queue);
   };
 };
 

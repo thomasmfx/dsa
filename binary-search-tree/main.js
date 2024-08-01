@@ -42,6 +42,11 @@ tree.insert(6)
 // tree.deleteItem(150);
 // tree.deleteItem(18)
 
+function timesTwo(arg) {
+  return arg.data;
+};
+
 prettyPrint(tree.root);
+console.log(tree.levelOrder(timesTwo))
 
 export { buildTree };
