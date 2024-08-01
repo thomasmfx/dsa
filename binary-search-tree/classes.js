@@ -153,6 +153,18 @@ class Tree {
 
     return goTo(this.root);
   };
+
+  find(data) {
+    function goTo(node) {
+      if (node.data === data) return node;
+
+      return node.data > data
+      ? goTo(node.left)
+      : goTo(node.right);
+    };
+
+    return goTo(this.root);
+  };
 };
 
 export { Node, Tree };
