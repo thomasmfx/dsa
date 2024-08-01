@@ -230,6 +230,24 @@ class Tree {
     preOrderTraversal(this.root);
     return callbacked;
   }
+
+  postOrder(callback) {
+    if (callback == undefined) throw new Error('Callback function is required as a function argument');
+
+    let callbacked = [];
+
+    function postOrderTraversal(current) {
+      if (!current) return;
+
+      postOrderTraversal(current.left);
+      postOrderTraversal(current.right);
+      callbacked.push(callback(current));
+    };
+
+    postOrderTraversal(this.root);
+
+    return callbacked;
+  }
 };
 
 export { Node, Tree };
