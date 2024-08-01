@@ -47,6 +47,6 @@ function timesTwo(arg) {
 };
 
 prettyPrint(tree.root);
-console.log(tree.inorder(timesTwo))
+console.log(tree.preOrder(timesTwo))
 
 export { buildTree };
