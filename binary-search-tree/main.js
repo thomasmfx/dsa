@@ -2,7 +2,6 @@ import { Node, Tree } from './classes.js';
 import formatArray from './formatData.js';
 
 let sample = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-// let formated = [1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345];
 
 function buildTree(array) {
   let start = 0;
@@ -39,7 +38,9 @@ tree.insert(20)
 tree.insert(150)
 tree.insert(380)
 tree.insert(6)
-// tree.deleteItem(1)
+// tree.deleteItem(9)
+// tree.deleteItem(150);
+// tree.deleteItem(18)
 
 prettyPrint(tree.root);
 
