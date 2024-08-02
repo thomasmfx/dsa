@@ -1,5 +1,11 @@
 import { buildTree } from './main.js';
 
+function isNull(obj) {
+  return obj === null
+  ? true
+  : false;
+};
+
 class Node {
   constructor(data) {
     this.data = data,
@@ -156,6 +162,7 @@ class Tree {
 
   find(data) {
     const goTo = (node) => {
+      if (isNull(node)) return null;
       if (node.data === data) return node;
 
       return node.data > data
@@ -248,6 +255,39 @@ class Tree {
 
     return callbacked;
   }
+
+  height(node) {
+    if (isNull(node)) return null;
+
+    function getObj(obj){
+      return obj;
+    };
+    let lastLeaf = this.levelOrder(getObj).pop();
+    
+    function goToLastLeaf(currentNode, currentHeight) {
+      if (currentNode.data === lastLeaf.data) return currentHeight;
+
+      return currentNode.data > lastLeaf.data
+      ? goToLastLeaf(currentNode.left, currentHeight + 1)
+      : goToLastLeaf(currentNode.right, currentHeight + 1);
+    };
+
+    return goToLastLeaf(node, 0);
+  };
+
+  depth(node) {
+    if (isNull(node)) return null;
+
+    const goTo = (currentNode, currentDepth) => {
+      if (currentNode.data === node.data) return currentDepth;
+
+      return currentNode.data > node.data
+      ? goTo(currentNode.left, currentDepth + 1)
+      : goTo(currentNode.right, currentDepth + 1);
+    };
+
+    return goTo(this.root, 0);
+  };
 };
 
 export { Node, Tree };
