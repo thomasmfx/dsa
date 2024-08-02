@@ -33,22 +33,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 let tree = new Tree(sample);
-// tree.insert(18)
-// tree.insert(20)
-// tree.insert(150)
-// tree.insert(380)
-// tree.insert(6)
-// tree.deleteItem(9)
-// tree.deleteItem(150);
-// tree.deleteItem(18)
-
-function nothing(arg) {
-  return arg.data;
-};
-
 prettyPrint(tree.root);
-console.log('67')
-console.log('Depth: ', tree.depth(tree.find(67)))
-console.log('Height: ', tree.height(tree.find(67)))
 
 export { buildTree };

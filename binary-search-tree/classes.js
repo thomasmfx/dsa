@@ -254,17 +254,17 @@ class Tree {
       queued.push(queue.shift());
     };
     
-    let lastLeaf = queued.pop();
+    let longestLeaf = queued.pop();
 
-    function goToLastLeaf(root, currentHeight) {
-      if (root.data === lastLeaf.data) return currentHeight;
+    function goToLongestLeaf(currentNode, currentHeight) {
+      if (currentNode.data === longestLeaf.data) return currentHeight;
 
-      return root.data > lastLeaf.data
-      ? goToLastLeaf(root.left, currentHeight + 1)
-      : goToLastLeaf(root.right, currentHeight + 1);
+      return currentNode.data > longestLeaf.data
+      ? goToLongestLeaf(currentNode.left, currentHeight + 1)
+      : goToLongestLeaf(currentNode.right, currentHeight + 1);
     };
 
-    return goToLastLeaf(node, 0);
+    return goToLongestLeaf(node, 0);
   };
 
   depth(node) {
@@ -279,6 +279,25 @@ class Tree {
     };
 
     return goTo(this.root, 0);
+  };
+
+  isBalanced() {
+    function getObj(obj) { return obj };
+    let nodes = this.levelOrder(getObj);
+
+    for (const node of nodes) {
+      if (this.height(node.left) - this.height(node.right) > 1)
+        return false;
+    };
+
+    return true;
+  };
+
+  rebalance() {
+    function getData(obj) { return obj.data };
+    let sortedArray = this.inorder(getData);
+
+    this.root = buildTree(sortedArray);
   };
 };
 
