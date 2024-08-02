@@ -177,83 +177,68 @@ class Tree {
     if (callback == undefined) throw new Error('Callback function is required as a function argument');
 
     let queue = [this.root]; // FIFO
-    let callbacked = [];
+    let callbackedArray = [];
 
     while (queue.length > 0) {
       if (queue[0].hasLeft()) queue.push(queue[0].left);
       if (queue[0].hasRight()) queue.push(queue[0].right);
 
-      callbacked.push(callback(queue.shift()));
+      callbackedArray.push(callback(queue.shift()));
     };
 
-    return callbacked;
-
-  // Recursive version:
-  
-  //   function callbackOnQueue() {
-  //   if (queue.length <= 0) return callbacked;
-
-  //   if (queue[0].hasLeft()) queue.push(queue[0].left);
-  //   if (queue[0].hasRight()) queue.push(queue[0].right);
-
-  //   callbacked.push(callback(queue.shift()));
-
-  //   return callbackOnQueue(queue);
-  // };
-
-  // return callbackOnQueue(queue);
+    return callbackedArray;
   };
 
   inorder(callback) {
     if (callback == undefined) throw new Error('Callback function is required as a function argument');
 
-    let callbacked = [];
+    let callbackedArray = [];
 
     function inorderTraversal(current) {
       if (!current) return;
 
       inorderTraversal(current.left);
-      callbacked.push(callback(current));
+      callbackedArray.push(callback(current));
       inorderTraversal(current.right);
     };
 
     inorderTraversal(this.root);
-    return callbacked;
+    return callbackedArray;
   };
 
   preOrder(callback) {
     if (callback == undefined) throw new Error('Callback function is required as a function argument');
 
-    let callbacked = [];
+    let callbackedArray = [];
 
     function preOrderTraversal(current) {
       if (!current) return;
 
-      callbacked.push(callback(current));
+      callbackedArray.push(callback(current));
       preOrderTraversal(current.left);
       preOrderTraversal(current.right);
     };
 
     preOrderTraversal(this.root);
-    return callbacked;
+    return callbackedArray;
   }
 
   postOrder(callback) {
     if (callback == undefined) throw new Error('Callback function is required as a function argument');
 
-    let callbacked = [];
+    let callbackedArray = [];
 
     function postOrderTraversal(current) {
       if (!current) return;
 
       postOrderTraversal(current.left);
       postOrderTraversal(current.right);
-      callbacked.push(callback(current));
+      callbackedArray.push(callback(current));
     };
 
     postOrderTraversal(this.root);
 
-    return callbacked;
+    return callbackedArray;
   }
 
   height(node) {
