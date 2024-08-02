@@ -161,13 +161,13 @@ class Tree {
   };
 
   find(data) {
-    const goTo = (node) => {
-      if (isNull(node)) return null;
-      if (node.data === data) return node;
+    const goTo = (currentNode) => {
+      if (isNull(currentNode)) return null;
+      if (currentNode.data === data) return currentNode;
 
-      return node.data > data
-      ? goTo(node.left)
-      : goTo(node.right);
+      return currentNode.data > data
+      ? goTo(currentNode.left)
+      : goTo(currentNode.right);
     };
 
     return goTo(this.root);
