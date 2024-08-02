@@ -258,18 +258,25 @@ class Tree {
 
   height(node) {
     if (isNull(node)) return null;
-
-    function getObj(obj){
-      return obj;
-    };
-    let lastLeaf = this.levelOrder(getObj).pop();
     
-    function goToLastLeaf(currentNode, currentHeight) {
-      if (currentNode.data === lastLeaf.data) return currentHeight;
+    let queue = [node];
+    let queued = [];
+    
+    while (queue.length > 0) {
+      if (queue[0].hasLeft()) queue.push(queue[0].left);
+      if (queue[0].hasRight()) queue.push(queue[0].right);
+      
+      queued.push(queue.shift());
+    };
+    
+    let lastLeaf = queued.pop();
 
-      return currentNode.data > lastLeaf.data
-      ? goToLastLeaf(currentNode.left, currentHeight + 1)
-      : goToLastLeaf(currentNode.right, currentHeight + 1);
+    function goToLastLeaf(root, currentHeight) {
+      if (root.data === lastLeaf.data) return currentHeight;
+
+      return root.data > lastLeaf.data
+      ? goToLastLeaf(root.left, currentHeight + 1)
+      : goToLastLeaf(root.right, currentHeight + 1);
     };
 
     return goToLastLeaf(node, 0);
