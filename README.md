@@ -21,9 +21,7 @@ A Binary Tree Data Structure is a hierarchical data structure where each node ha
   <img src="./assets/bst.png">
 </div>
 
-## Features
-
-### Node
+### Features
 
 ```javascript
 class Node {
@@ -32,19 +30,19 @@ class Node {
     this.left = null,
     this.right = null
 
-    // Methods to manipulate nodes
+    // ...Methods to manipulate nodes
   }
 }
 ```
 
-### Tree
+***
 
 ```javascript
 class Tree {
   constructor(arr) {
     this.root = buildTree(arr)
 
-    // ... Methods listed below
+    // ...Methods listed below
   }
 }
 ```
@@ -92,9 +90,7 @@ A hashmap (or hash table) is a data structure used to implement the map, an abst
   <img src="./assets/hashmap.png">
 </div>
 
-## Features
-
-### Hashmap
+### Features
 
 ```javascript
 class HashMap {
@@ -102,7 +98,7 @@ class HashMap {
     this.map = [];
     generateBuckets(this.map);
 
-    // ... Methods listed below
+    // ...Methods listed below
   };
 };
 ```
@@ -130,3 +126,54 @@ class HashMap {
 <div align="right">
   <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>
 </div>
+
+## Linked List
+
+A linked list is a data structure that mainly allows efficient **insertion** **deletion** operations compared to arrays. It consists of a sequence of nodes connected by pointers or references depending on the language it is written. Each node contains a value and a pointer/reference to the next node in the list. Linked lists are more efficient for **insertion** or **removal** because the nodes are not stored continuously in memory.
+
+[Source code](./linked-list)
+
+<div align=center> 
+  <img src="./assets/linked-list.png">
+</div>
+
+### Features
+
+```javascript
+class LinkedList {
+  constructor() {
+    this.head = createNode(null)
+
+    // ...Methods listed below
+  }
+}
+```
+
+- `append(value)` adds a new node containing `value` to the end of the list
+
+- `preppend(value)` adds a new node containing value to the start of the list
+
+- `size()` returns the total number of nodes in the list
+
+- `getHead()` returns the first node in the list
+
+- `tail()` returns the last node in the list
+
+- `at(index)` returns the node at the given `index`
+
+- `pop()` removes the last element from the list
+
+- `contains(value)` returns true if the passed in value is in the list and otherwise returns false
+
+- `find(value)` returns the index of the node containing value, or null if not found
+
+- `toString()` represents the LinkedList objects as strings, so you can print them out and preview them in the console, as the above image example
+
+- `insertAt(value, index)` that inserts a new node with the provided `value` at the given `index`
+
+- `removeAt(value, index)` that removes the node at the given `index`
+
+<div align="right">
+  <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>
+</div>
+
