@@ -12,16 +12,15 @@ function fibs(range) {
   return sequence;
 };
 
-// console.log(fibs(-2))
-// console.log(fibs(8))
-
 function fibsRec(n) {
-  if (n <= 0) return [0];
-  if (n == 1) return [0, 1];
-  
-  const arr = fibsRec(n - 1);
-  return [...arr, arr[n - 1] + arr[n - 2]];
-};  
+  const recursive = (n) => {
+    if (n == 0) return [0];
+    if (n == 1) return [0, 1];
 
-console.log(fibsRec(8));
-console.log(fibsRec(-2));
+    const arr = recursive(n - 1);
+    return [...arr, arr[n - 1] + arr[n - 2]];
+  };
+
+  let arr = recursive(n - 1);
+  return arr;
+};
