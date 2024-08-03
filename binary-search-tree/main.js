@@ -32,7 +32,52 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   };
 };
 
-let tree = new Tree(sample);
+function generateRandomList(size) {
+  let randomList = [];
+  for (let i = 0; i < size; i++) {
+      randomList.push(Math.floor(Math.random() * 100));
+  };
+  return randomList;
+};
+
+function onlyData(obj) {
+  return obj.data;
+};
+
+
+// Driver script
+let tree = new Tree(generateRandomList(10));
+
 prettyPrint(tree.root);
+console.log('\n');
+// Confirm balance
+console.log('Tree is balanced: ', tree.isBalanced());
+// Print all elements in different orders
+console.log('\n');
+console.log('Level-order: ', tree.levelOrder(onlyData));
+console.log('Pre-order: ', tree.preOrder(onlyData));
+console.log('Post-order: ', tree.postOrder(onlyData));
+console.log('Inorder: ', tree.inorder(onlyData));
+console.log('\n');
+// Unbalance tree
+tree.insert(150);
+tree.insert(200);
+tree.insert(250);
+// Confirm unbalance
+prettyPrint(tree.root);
+console.log('\n');
+console.log('Tree is balanced: ', tree.isBalanced());
+// Balance tree
+console.log('Rebalanced tree: ');
+console.log('\n');
+tree.rebalance();
+prettyPrint(tree.root);
+// Print all elements in different orders
+console.log('\n');
+console.log('Level-order: ', tree.levelOrder(onlyData));
+console.log('Pre-order: ', tree.preOrder(onlyData));
+console.log('Post-order: ', tree.postOrder(onlyData));
+console.log('Inorder: ', tree.inorder(onlyData));
+console.log('\n');
 
 export { buildTree };

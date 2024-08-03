@@ -282,15 +282,10 @@ class Tree {
   };
 
   isBalanced() {
-    function getObj(obj) { return obj };
-    let nodes = this.levelOrder(getObj);
+    let leftHeight = this.height(this.root.left);
+    let rightHeight = this.height(this.root.right);
 
-    for (const node of nodes) {
-      if (this.height(node.left) - this.height(node.right) > 1)
-        return false;
-    };
-
-    return true;
+    return Math.abs(leftHeight - rightHeight) > 1 ? false : true;
   };
 
   rebalance() {
