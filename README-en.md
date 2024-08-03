@@ -2,9 +2,9 @@
 
 # DSA - Data Structures and Algorithms
 
-This repository was made to keep track of what i have developed while studying one of the most important topics in Computer Science, and essential to solve problems in a GOOD way: Data Structures and Algorithms.
+This repository was made to keep track of what i have developed while studying one of the most important topics in programming and Computer Science, and essential to solve problems in a GOOD way: Data Structures and Algorithms.
 
-The order of the contents in the summary are from newest to oldest created, so if you are not familiar with most concepts and want to grasp a bit of them, i suggest you to read it from bottom to top, since some of them are dependant from each other.
+The order of the contents in the summary are from newest to oldest created, so if you are not familiar with most concepts and want to grasp a bit of them, i suggest you to read it from oldest to newest, since some of them are dependant from each other.
 
 ## Summary
 
@@ -15,7 +15,7 @@ The order of the contents in the summary are from newest to oldest created, so i
 
 ## Binary Search Tree
 
-A Binary Tree Data Structure is a hierarchical data structure where each node has at most two children, the left child and the right child. Why balanced? Keeping it balanced ensures a good performance, as it provide O(log N) time for **search**, **insert** and **delete**
+A Binary Tree Data Structure is a hierarchical data structure where each node has at most two children, the left child and the right child. Why balanced? Keeping it balanced ensures a good performance, as it provide O(log N) time for **search**, **insert** and **delete**.
 
 [Source code](./binary-search-tree/)
 
@@ -49,15 +49,15 @@ class Tree {
 }
 ```
 
-- `insert(data)` creates a Node with the given value and inserts in the tree
+- `insert(data)` creates a Node with the given `data` and inserts in the tree
 
-- `deleteItem(data)` deletes the Node with the given data
+- `deleteItem(data)` deletes the Node that contains `data` from the tree
 
-- `find(data)` returns the node with the given data
+- `find(data)` returns the node that contains `data`
 
-- `height(node)` returns the height of the given node in the tree
+- `height(node)` returns the height of the given `node` in the tree
 
-- `depth(node)` returns the depth of the given node in the tree
+- `depth(node)` returns the depth of the given `node` in the tree
 
 - `isBalanced()` checks if tree is balanced
 
@@ -65,6 +65,7 @@ class Tree {
 
 ### Tree's Traversal methods
 
+Each of the methods traverses the tree and, for each node visited, a function passed as a `callback` is executed into it. When completing the traversal, the methods return an array with all the nodes in the tree in their respective order, with the callback executed on each node.
 
 - Level Order Traversal (a.k.a Breadth First Search or BFS)
 
@@ -105,15 +106,15 @@ class HashMap {
 };
 ```
 
-- `hash(key)` takes a key and produces a hash code
+- `hash(key)` takes a value `key` and produces a hash code
 
-- `set(key, value)` creates an entry with a value assigned to the key
+- `set(key, value)` creates an entry with `value` assigned to a `key`
 
-- `get(key)` returns the value that is assigned to the given key
+- `get(key)` returns the value that is assigned to `key`
 
-- `has(key)` returns `true` or `false` based on wether the key is in the hash map or not
+- `has(key)` returns *true* or *false* based on wether the `key` is in the hash map or not
 
-- `remove(key)` removes the entry with the given key
+- `remove(key)` removes the entry with the given `key`
 
 - `length()` returns the number of stored keys in the hash map
 
@@ -165,15 +166,15 @@ class LinkedList {
 
 - `pop()` removes the last element from the list
 
-- `contains(value)` returns true if the passed in value is in the list and otherwise returns false
+- `contains(value)` returns *true* if `value` is in the list and otherwise returns *false*
 
-- `find(value)` returns the index of the node containing value, or null if not found
+- `find(value)` returns the index of the node with `value`, or *null* if not found
 
 - `toString()` represents the LinkedList objects as strings, so you can print them out and preview them in the console, as the above image example
 
 - `insertAt(value, index)` that inserts a new node with the provided `value` at the given `index`
 
-- `removeAt(value, index)` that removes the node at the given `index`
+- `removeAt(index)` that removes the node at the given `index`
 
 <div align="right">
   <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>

@@ -2,7 +2,7 @@
 
 # Estruturas de Dados e Algoritmos
 
-Esse repositório foi criado para documentar o que eu desenvolvi estudando um dos tópicos mais importantes da programação e Ciência da Computação: Estruturas de Dados e Algoritmos.
+Esse repositório foi criado para documentar o eu desenvolvi estudando um dos tópicos mais importantes da programação e Ciência da Computação, e essencial para resolver problemas com uma abordagem EFICIENTE: Estruturas de Dados e Algoritmos.
 
 A ordem do conteúdo do sumário segue do mais recente pro mais antigo, então se você não é familiarizado com alguns conceitos e deseja aprender um pouco, eu sugiro a leitura do mais antigo pro mais recente, pois alguns conceitos são dependentes um do outro.
 
@@ -11,11 +11,11 @@ A ordem do conteúdo do sumário segue do mais recente pro mais antigo, então s
 - [Balanced Binary Search Tree](#binary-search-tree)
 - [Hashmap](#hashmap)
 - [Linked List](#linked-list)
-- [Recursion](#recursion)
+- [Recursão](#recursão)
 
 ## Binary Search Tree
 
-Uma Árvore de Busca Binária é uma estrutura de dados onde cada objeto da árvore, chamado de node, tem no máximo dois filhos, o da esquerda e direita. Por quê balanceada? Manter uma BST balanceada garante uma boa performance, já que sua complexidade de tempo para **pesquisa** **inserção** e **remoção** de dados é igual a O(log N).
+Uma Árvore de Busca Binária é uma estrutura de dados onde cada objeto da árvore, chamados de node, tem no máximo dois filhos, o da esquerda e direita. Por quê balanceada? Manter uma BST balanceada garante uma boa performance, já que sua complexidade de tempo para **pesquisa**, **inserção** e **remoção** de dados é igual a O(log N).
 
 [Código fonte](./binary-search-tree/)
 
@@ -65,6 +65,7 @@ class Tree {
 
 ### Métodos para atravessar a árvore
 
+Cada um dos métodos atravessam a árvore e, para cada node visitado, é executado uma função que é passada como `callback` para o método. Ao finalizarem a travessia, os métodos retornam um array com todos os nodes da árvore em sua respectiva ordem, com o callback executado em cada node.
 
 - Level Order Traversal (também Breadth First Search ou BFS)
 
@@ -84,7 +85,7 @@ class Tree {
 
 ## Hashmap
 
-Um hashmap (ou hash table) é uma estrutura de dados usado para implementar um map, um tipo de estrutura de dados abstrata. Um hashmap é composto por um array, onde cada index possui uma linked list que atua como uma espécia de "balde". Para inserir e procurar valores, primeiro é relazido uma operação chamada "hashing", que retorna o que é chamada de hashcode. Com o hashcode, é possível pular para o index correspondente o hashcode, que contém um balde onde é possível realizar operações como **pesquisa**, **inserção** e **remoção** de entradas.
+Um hashmap (ou hash table) é uma estrutura de dados usado para implementar um map, um tipo de estrutura de dados abstrata. Um hashmap é composto por um array, onde cada index possui uma linked list que atua como uma espécia de "balde". Para inserir e procurar valores, primeiro é realizado uma operação chamada "hashing", que retorna o que é chamado de hashcode. Com o hashcode, é possível pular para o index correspondente ao hashcode no array, que contém uma linked list onde é possível realizar operações como **pesquisa**, **inserção** e **remoção** de entradas.
 
 [Código fonte](./hashmap/)
 
@@ -105,15 +106,15 @@ class HashMap {
 };
 ```
 
-- `hash(key)` pega uma chave e produz um hashcode
+- `hash(key)` pega o valor da chave `key` e produz um hashcode
 
-- `set(key, value)` cria uma entrada com o valor fornecido atribuído a chave
+- `set(key, value)` cria uma entrada com um `value` atribuído a uma `key`
 
-- `get(key)` retorna o valor atríbuido à chave fornecida
+- `get(key)` retorna o valor atríbuido à `key` fornecida
 
-- `has(key)` retorna verdadeiro ou falso com base se a chave está no hash map ou não, respectivamente
+- `has(key)` retorna `true` ou `false` com base se a chave está no hash map ou não, respectivamente
 
-- `remove(key)` remove a entrada com a chave fornecida
+- `remove(key)` remove a entrada com a `key` fornecida
 
 - `length()` retorna o número de chaves dentro do hash map
 
@@ -139,7 +140,7 @@ Uma lista ligada, é uma estrutura de dados que fornece maior eficiência para o
   <img src="./assets/linked-list.png">
 </div>
 
-### Features
+### Propriedades
 
 ```javascript
 class LinkedList {
@@ -151,45 +152,45 @@ class LinkedList {
 }
 ```
 
-- `append(value)` adiciona um novo node contendo o valor fornecido ao fim da lista
+- `append(value)` adiciona um novo node contendo o valor de `value` ao fim da lista
 
-- `preppend(value)` adiciona um novo node contendo o valor fornecido ao começo da lista
+- `preppend(value)` adiciona um novo node contendo `value` ao começo da lista
 
-- `size()` retorna o número total de nodes na list
+- `size()` retorna o número total de nodes na lista
 
-- `getHead()` retorna o primeiro noda da lista
+- `getHead()` retorna o primeiro node da lista
 
 - `tail()` retorna o último node da lista
 
-- `at(index)` retorna o node posicionado no index fornecido
+- `at(index)` retorna o node posicionado no `index`
 
 - `pop()` remove o último node da lista
 
-- `contains(value)` retorna verdadeiro se o valor fornecido está na lista, ou falso caso contrário
+- `contains(value)` retorna `true` se o valor fornecido está na lista, ou `false` caso contrário
 
-- `find(value)` retorna o index do node contendo o valor fornecido, ou `null` caso não seja encontrado
+- `find(value)` retorna o index do node que contém `value`, ou `null` caso não seja encontrado
 
-- `toString()` representa os nodes da linked list como strings, de forma com que possam ser vistos no console, igual a imagem exemplo acima
+- `toString()` representa os nodes da linked list e suas ligações em forma de string, de forma com que possam ser vistos no console, igual a imagem exemplo acima
 
-- `insertAt(value, index)` insere um novo node com um valor ao index fornecido
+- `insertAt(value, index)` insere um novo node contendo `value` ao `index`
 
-- `removeAt(index)` remove o node no index fornecido 
+- `removeAt(index)` remove o node posicionado no `index`
 
 <div align="right">
   <a href="#estruturas-de-dados-e-algoritmos" style="font-weight: bold">&uarr; Voltar para o início</a>
 </div>
 
-## Recursion
+## Recursão
 
-Recursion é simplesmente a ideia de uma função que chama a si mesma. A função pega um problema grande e começa a dividir em problemas cada vez menores ("Dividir e conquistar"), e continua fornecendo os resultados para a função original até que uma espécia de resposta é alcançada e toda a cadeia de chamadas para.
+Recursão é simplesmente a ideia de uma função que chama a si mesma. A função pega um problema grande e começa a dividir em problemas cada vez menores ("Dividir e conquistar"), e continua fornecendo os resultados para a função original até que uma espécia de resposta é alcançada e toda a cadeia de chamadas é interrompida.
 
 [Código fonte](./recursion/)
 
-### Features
+### Propriedades
 
 ### [`fibonacci.js`](./recursion/fibonacci.js)
 
-A Sequência de Fibonacci é uma sequência numérica onde cada número é a soma dos dois números anteriores. Por exemplo: 0, 1, 1, 2, 3, 5, 8, 13 são os primeiros oito dígitos da sequência. Eu escrevi duas funções que retornam um array com todos os números da sequência até o número fornecido, uma versão usando iteração e uma versão recursiva.
+A Sequência de Fibonacci é uma sequência numérica onde cada número é a soma dos dois números anteriores. Por exemplo: 0, 1, 1, 2, 3, 5, 8, 13 são os primeiros oito dígitos da sequência. Foram escritas duas funções que retornam um array com todos os números da sequência até o número fornecido, uma versão usando iteração e outra recursiva.
 
 #### Usando iteração
 
@@ -207,7 +208,7 @@ function fibs(range) {
 };
 ```
 
-#### Using recursão
+#### Usando recursão
 
 ```javascript
 function fibsRec(n) {
