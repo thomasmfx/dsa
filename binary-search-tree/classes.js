@@ -1,7 +1,7 @@
 import { buildTree } from './main.js';
 
 function isNull(obj) {
-  return obj === null
+  return obj == null
   ? true
   : false;
 };
@@ -73,9 +73,12 @@ class Tree {
   };
 
   insert(data) {
+    if (isNull(data)) return;
     let newNode = new Node(data);
 
     const goTo = (currentNode) => {
+      if (currentNode.data === data) return;
+
       if (currentNode.isLeaf()) {
         return currentNode.setChild(newNode);
       } else {
@@ -129,19 +132,19 @@ class Tree {
     if (currentNode.data === data) {
       // Node has both children
       if (currentNode.hasBothChildren()) {
-
         function findInorderSuccessor(node) {
           return !node.left.hasLeft()
           ? node
           : findInorderSuccessor(node.left);
         };
 
-        let successor = findInorderSuccessor(currentNode.right).left;
-        currentNode.setData(successor.data);
+        let successor = findInorderSuccessor(currentNode.right);
+        let lastInLeft = successor.left;
+        currentNode.setData(lastInLeft.data);
 
-        return successor.hasRight()
-        ? successor.replace(successor.right)
-        : successor = null;
+        return lastInLeft.hasRight()
+        ? successor.replace(lastInLeft.right)
+        : successor.deleteLeft();
       };
 
       // Node has only one child
@@ -282,10 +285,23 @@ class Tree {
   };
 
   isBalanced() {
-    let leftHeight = this.height(this.root.left);
-    let rightHeight = this.height(this.root.right);
+    const checkHeight = (currentNode) => {
+      if(currentNode == null) return true;
 
-    return Math.abs(leftHeight - rightHeight) > 1 ? false : true;
+      let leftHeight = this.height(currentNode.left);
+      let rightHeight = this.height(currentNode.right);
+  
+      if (
+        Math.abs(leftHeight - rightHeight) <= 1
+        && checkHeight(currentNode.left) == true 
+        && checkHeight( currentNode.right) == true
+      )
+        return true;
+
+      return false;
+    };
+
+    return checkHeight(this.root)
   };
 
   rebalance() {
