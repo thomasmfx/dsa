@@ -40,8 +40,10 @@ function generateRandomList(size) {
   return randomList;
 };
 
+console.log('\n')
 let tree = new Tree(generateRandomList(16));
 prettyPrint(tree.root);
+console.log('\n')
 
 // Tree Manipulation test - uncomment to run
 
