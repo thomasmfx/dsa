@@ -2,7 +2,7 @@
 
 This repository was made to keep track of what i have developed while studying one of the most important topics in Computer Science, and essential to solve problems in a GOOD way: Data Structures and Algorithms.
 
-The order of the contents in the summary are from newest to oldest, so if you are not familiar with most concepts and want to grasp a bit of them, i suggest you to read the topics of the summary from bottom to top, since some of them are dependant from each other, such as a Hashmap and a Linked List.
+The order of the contents in the summary are from newest to oldest created, so if you are not familiar with most concepts and want to grasp a bit of them, i suggest you to read it from bottom to top, since some of them are dependant from each other.
 
 ## Summary
 
