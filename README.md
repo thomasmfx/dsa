@@ -1,10 +1,12 @@
-# DSA - Data Structures and Algorithms
+**[EN-US](./README-en.md)**
 
-This repository was made to keep track of what i have developed while studying one of the most important topics in Computer Science, and essential to solve problems in a GOOD way: Data Structures and Algorithms.
+# Estruturas de Dados e Algoritmos
 
-The order of the contents in the summary are from newest to oldest created, so if you are not familiar with most concepts and want to grasp a bit of them, i suggest you to read it from bottom to top, since some of them are dependant from each other.
+Esse repositório foi criado para documentar o que eu desenvolvi estudando um dos tópicos mais importantes da programação e Ciência da Computação: Estruturas de Dados e Algoritmos.
 
-## Summary
+A ordem do conteúdo do sumário segue do mais recente pro mais antigo, então se você não é familiarizado com alguns conceitos e deseja aprender um pouco, eu sugiro a leitura do mais antigo pro mais recente, pois alguns conceitos são dependentes um do outro.
+
+## Sumário
 
 - [Balanced Binary Search Tree](#binary-search-tree)
 - [Hashmap](#hashmap)
@@ -13,15 +15,15 @@ The order of the contents in the summary are from newest to oldest created, so i
 
 ## Binary Search Tree
 
-A Binary Tree Data Structure is a hierarchical data structure where each node has at most two children, the left child and the right child. Why balanced? Keeping it balanced ensures a good performance, as it provide O(log N) time for **search**, **insert** and **delete**
+Uma Árvore de Busca Binária é uma estrutura de dados onde cada objeto da árvore, chamado de node, tem no máximo dois filhos, o da esquerda e direita. Por quê balanceada? Manter uma BST balanceada garante uma boa performance, já que sua complexidade de tempo para **pesquisa** **inserção** e **remoção** de dados é igual a O(log N).
 
-[Source code](./binary-search-tree/)
+[Código fonte](./binary-search-tree/)
 
 <div align=center> 
   <img src="./assets/bst.png">
 </div>
 
-### Features
+### Propriedades
 
 ```javascript
 class Node {
@@ -30,7 +32,7 @@ class Node {
     this.left = null,
     this.right = null
 
-    // ...Methods to manipulate nodes
+    // ...Métodos para manipular nodes e suas conexões
   }
 }
 ```
@@ -42,29 +44,29 @@ class Tree {
   constructor(arr) {
     this.root = buildTree(arr)
 
-    // ...Methods listed below
+    // ...Métodos descritos logo abaixo
   }
 }
 ```
 
-- `insert(data)` creates a Node with the given value and inserts in the tree
+- `insert(data)` cria um node com o valor fornecido e insere na árvore
 
-- `deleteItem(data)` deletes the Node with the given data
+- `deleteItem(data)` deleta o node com o valor fornecido
 
-- `find(data)` returns the node with the given data
+- `find(data)` retorna o node com o valor fornecido
 
-- `height(node)` returns the height of the given node in the tree
+- `height(node)` retorna a altura do node em relação à base da árvore 
 
-- `depth(node)` returns the depth of the given node in the tree
+- `depth(node)` retorna a profundidade do node em relação ao topo da árvore
 
-- `isBalanced()` checks if tree is balanced
+- `isBalanced()` verifica se a árvore está balanceada
 
-- `rebalance()` rebalances the tree
+- `rebalance()` rebalanceia a árvore
 
-### Tree's Traversal methods
+### Métodos para atravessar a árvore
 
 
-- Level Order Traversal (a.k.a Breadth First Search or BFS)
+- Level Order Traversal (também Breadth First Search ou BFS)
 
   - `levelOrder(callback)`
 
@@ -77,20 +79,20 @@ class Tree {
   - `inorder(callback)`
 
 <div align="right">
-  <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>
+  <a href="#estruturas-de-dados-e-algoritmos" style="font-weight: bold">&uarr; Voltar para o início</a>
 </div>
 
 ## Hashmap
 
-A hashmap (or hash table) is a data structure used to implement the map, an abstract data type. A hashmap is composed of an array, where each index contains a linked list that acts as a "bucket". For setting and looking up values, it first hashes the given value, wich returns what is called a hash code. With the hash code, it jumps to the index of the array with the same value, and since it is a linked list, it's possible to realize common operations such as **search**, **insert** and **delete** entries.
+Um hashmap (ou hash table) é uma estrutura de dados usado para implementar um map, um tipo de estrutura de dados abstrata. Um hashmap é composto por um array, onde cada index possui uma linked list que atua como uma espécia de "balde". Para inserir e procurar valores, primeiro é relazido uma operação chamada "hashing", que retorna o que é chamada de hashcode. Com o hashcode, é possível pular para o index correspondente o hashcode, que contém um balde onde é possível realizar operações como **pesquisa**, **inserção** e **remoção** de entradas.
 
-[Source code](./hashmap/)
+[Código fonte](./hashmap/)
 
 <div align=center> 
-  <img src="./assets/hashmap.png">
+  <img src="./assets/hashmap.png">  
 </div>
 
-### Features
+### Propriedades
 
 ```javascript
 class HashMap {
@@ -98,40 +100,40 @@ class HashMap {
     this.map = [];
     generateBuckets(this.map);
 
-    // ...Methods listed below
+    // ...Métodos listados logo abaixo
   };
 };
 ```
 
-- `hash(key)` takes a key and produces a hash code
+- `hash(key)` pega uma chave e produz um hashcode
 
-- `set(key, value)` creates an entry with a value assigned to the key
+- `set(key, value)` cria uma entrada com o valor fornecido atribuído a chave
 
-- `get(key)` returns the value that is assigned to the given key
+- `get(key)` retorna o valor atríbuido à chave fornecida
 
-- `has(key)` returns `true` or `false` based on wether the key is in the hash map or not
+- `has(key)` retorna verdadeiro ou falso com base se a chave está no hash map ou não, respectivamente
 
-- `remove(key)` removes the entry with the given key
+- `remove(key)` remove a entrada com a chave fornecida
 
-- `length()` returns the number of stored keys in the hash map
+- `length()` retorna o número de chaves dentro do hash map
 
-- `clear()` removes all entries in the hash map
+- `clear()` remove todas as entradas to hash map
 
-- `keys()` returns an array containing all the keys inside the hash map
+- `keys()` retorna um array contendo todas as chaves dentro do hash map
 
-- `values()` returns an array containing all the values inside the hash map
+- `values()` retorna um array contendo todos os valores dentro do hash map
 
-- `entries()` returns an array containing all key-value pairs inside the hashmap
+- `entries()` retorna um array contendo todos os pares de chave-valor dentro do hash map
 
 <div align="right">
-  <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>
+  <a href="#estruturas-de-dados-e-algoritmos" style="font-weight: bold">&uarr; Voltar para o início</a>
 </div>
 
 ## Linked List
 
-A linked list is a data structure that mainly allows efficient **insertion** **deletion** operations compared to arrays. It consists of a sequence of nodes connected by pointers or references depending on the language it is written. Each node contains a value and a pointer/reference to the next node in the list. Linked lists are more efficient for **insertion** or **removal** because the nodes are not stored continuously in memory.
+Uma lista ligada, é uma estrutura de dados que fornece maior eficiência para operações de **inserção** e **remoção** comparado com um array. Uma linked list consiste em uma sequência de nodes conectados por ponteiros ou referências dependendo da linguagem em que é escrita. Cada node contém um valor e um ponteiro/referência para o próximo node na lista. Linked lists são mais eficientes para **inserção** e **remoção** porque os nodes não são armazenados sequencialmente na memória, ao contrário de um array. 
 
-[Source code](./linked-list/)
+[Código fonte](./linked-list/)
 
 <div align=center> 
   <img src="./assets/linked-list.png">
@@ -144,52 +146,52 @@ class LinkedList {
   constructor() {
     this.head = createNode(null)
 
-    // ...Methods listed below
+    // ...Métodos listados logo abaixo
   }
 }
 ```
 
-- `append(value)` adds a new node containing `value` to the end of the list
+- `append(value)` adiciona um novo node contendo o valor fornecido ao fim da lista
 
-- `preppend(value)` adds a new node containing `value` to the start of the list
+- `preppend(value)` adiciona um novo node contendo o valor fornecido ao começo da lista
 
-- `size()` returns the total number of nodes in the list
+- `size()` retorna o número total de nodes na list
 
-- `getHead()` returns the first node in the list
+- `getHead()` retorna o primeiro noda da lista
 
-- `tail()` returns the last node in the list
+- `tail()` retorna o último node da lista
 
-- `at(index)` returns the node at the given `index`
+- `at(index)` retorna o node posicionado no index fornecido
 
-- `pop()` removes the last element from the list
+- `pop()` remove o último node da lista
 
-- `contains(value)` returns true if the passed in value is in the list and otherwise returns false
+- `contains(value)` retorna verdadeiro se o valor fornecido está na lista, ou falso caso contrário
 
-- `find(value)` returns the index of the node containing value, or null if not found
+- `find(value)` retorna o index do node contendo o valor fornecido, ou `null` caso não seja encontrado
 
-- `toString()` represents the LinkedList objects as strings, so you can print them out and preview them in the console, as the above image example
+- `toString()` representa os nodes da linked list como strings, de forma com que possam ser vistos no console, igual a imagem exemplo acima
 
-- `insertAt(value, index)` that inserts a new node with the provided `value` at the given `index`
+- `insertAt(value, index)` insere um novo node com um valor ao index fornecido
 
-- `removeAt(value, index)` that removes the node at the given `index`
+- `removeAt(index)` remove o node no index fornecido 
 
 <div align="right">
-  <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>
+  <a href="#estruturas-de-dados-e-algoritmos" style="font-weight: bold">&uarr; Voltar para o início</a>
 </div>
 
 ## Recursion
 
-Recursion is simply the idea of a function that calls itself. The function takes a big problem and starts breaking it down into smaller and smaller pieces ("Divide and Conquer") and continue to feed its results into the original function until some sort of answer is achieved and the whole chain stops.
+Recursion é simplesmente a ideia de uma função que chama a si mesma. A função pega um problema grande e começa a dividir em problemas cada vez menores ("Dividir e conquistar"), e continua fornecendo os resultados para a função original até que uma espécia de resposta é alcançada e toda a cadeia de chamadas para.
 
-[Source code](./recursion/)
+[Código fonte](./recursion/)
 
 ### Features
 
 ### [`fibonacci.js`](./recursion/fibonacci.js)
 
-The Fibonacci Sequence, is a numerical sequence where each number is the sum of the two numbers before it. Eg. 0, 1, 1, 2, 3, 5, 8, 13 are the first eight digits in the sequence. I wrote two functions that return an array with all the numbers in the sequence up to the given number, an iteration version and a recursive version.
+A Sequência de Fibonacci é uma sequência numérica onde cada número é a soma dos dois números anteriores. Por exemplo: 0, 1, 1, 2, 3, 5, 8, 13 são os primeiros oito dígitos da sequência. Eu escrevi duas funções que retornam um array com todos os números da sequência até o número fornecido, uma versão usando iteração e uma versão recursiva.
 
-#### Using iteration
+#### Usando iteração
 
 ```javascript
 function fibs(range) {
@@ -205,7 +207,7 @@ function fibs(range) {
 };
 ```
 
-#### Using recursion
+#### Using recursão
 
 ```javascript
 function fibsRec(n) {
@@ -225,8 +227,7 @@ function fibsRec(n) {
 
 ### [`mergeSort.js`](./recursion/mergeSort.js)
 
-Merge sort a sorting algorithm that uses the "Divide and Conquer" approach, and can be much faster than other algorithms such as bubble sort on the right data sets. Essentially, merge sort recurses through an array of unsorted data until it reaches its smallest sub-set, a single item, and then merges the single items back togheter in sorted order.
-
+Merge sort é um algoritmo de ordenação que usa a abordagem "Dividir e Conquistar", e pode ser muito mais rápido do que outros algoritmos de ordenação (bubble sort por exemplo) nos conjuntos de dados corretos. Essencialmente, um algoritmo de merge sort percorre um array de dados não ordenados até atingir seu menor subconjunto, um único item, e então mescla os itens únicos novamente de forma ordenada.
 
 ```javascript
 function mergeSort(arr) {
@@ -258,5 +259,5 @@ function merge(left, right) {
 ```
 
 <div align="right">
-  <a href="#dsa---data-structures-and-algorithms" style="font-weight: bold">&uarr; Back to top</a>
+  <a href="#estruturas-de-dados-e-algoritmos" style="font-weight: bold">&uarr; Voltar para o início</a>
 </div>
