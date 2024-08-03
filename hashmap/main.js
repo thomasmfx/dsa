@@ -178,7 +178,7 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
-test.set('moon', 'silver')
+// test.set('moon', 'silver')
 
 // Tests:
 
@@ -196,4 +196,6 @@ test.set('moon', 'silver')
 // For methods that don't return anything, check the changes by uncommenting one of these:
 
 // console.log(test.entries())
-// console.log(test.map)
+console.log('\n')
+console.log(test.map)
+console.log('\n')
