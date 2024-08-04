@@ -49,15 +49,15 @@ class Tree {
 }
 ```
 
-- `insert(data)` cria um node com o valor fornecido e insere na árvore
+- `insert(data)` cria um node contendo o valor de `data` e insere na árvore
 
-- `deleteItem(data)` deleta o node com o valor fornecido
+- `deleteItem(data)` deleta o node que contém `data` fornecido
 
-- `find(data)` retorna o node com o valor fornecido
+- `find(data)` retorna o node que contém `data`
 
-- `height(node)` retorna a altura do node em relação à base da árvore 
+- `height(node)` retorna a altura do `node` em relação à base da árvore 
 
-- `depth(node)` retorna a profundidade do node em relação ao topo da árvore
+- `depth(node)` retorna a profundidade do `node` em relação ao topo da árvore
 
 - `isBalanced()` verifica se a árvore está balanceada
 
