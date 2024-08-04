@@ -2,7 +2,7 @@
 
 # Estruturas de Dados e Algoritmos
 
-Esse repositório foi criado para documentar o eu desenvolvi estudando um dos tópicos mais importantes da programação e Ciência da Computação, e essencial para resolver problemas com uma abordagem EFICIENTE: Estruturas de Dados e Algoritmos.
+Esse repositório foi criado para documentar o eu desenvolvi estudando um dos tópicos mais importantes da programação e Ciência da Computação, e essencial para resolver problemas usando uma abordagem EFICIENTE: Estruturas de Dados e Algoritmos.
 
 A ordem do conteúdo do sumário segue do mais recente pro mais antigo, então se você não é familiarizado com alguns conceitos e deseja aprender um pouco, eu sugiro a leitura do mais antigo pro mais recente, pois alguns conceitos são dependentes um do outro.
 
