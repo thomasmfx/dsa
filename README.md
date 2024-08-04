@@ -108,11 +108,11 @@ class HashMap {
 
 - `hash(key)` pega o valor da chave `key` e produz um hashcode
 
-- `set(key, value)` cria uma entrada com um `value` atribuído a uma `key`
+- `set(key, value)` cria uma entrada com `value` atribuído à `key`
 
 - `get(key)` retorna o valor atríbuido à `key` fornecida
 
-- `has(key)` retorna `true` ou `false` com base se a chave está no hash map ou não, respectivamente
+- `has(key)` retorna *true* caso `key` esteja no hash map, ou *false* caso contrário
 
 - `remove(key)` remove a entrada com a `key` fornecida
 
@@ -166,9 +166,9 @@ class LinkedList {
 
 - `pop()` remove o último node da lista
 
-- `contains(value)` retorna `true` se o valor fornecido está na lista, ou `false` caso contrário
+- `contains(value)` retorna *true* se `value` está na lista, ou *false* caso contrário
 
-- `find(value)` retorna o index do node que contém `value`, ou `null` caso não seja encontrado
+- `find(value)` retorna o index do node que contém `value`, ou *null* caso não seja encontrado
 
 - `toString()` representa os nodes da linked list e suas ligações em forma de string, de forma com que possam ser vistos no console, igual a imagem exemplo acima
 
