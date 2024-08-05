@@ -51,7 +51,7 @@ class Tree {
 
 - `insert(data)` cria um node contendo o valor de `data` e insere na árvore
 
-- `deleteItem(data)` deleta o node que contém `data` fornecido
+- `deleteItem(data)` deleta o node que contém `data`
 
 - `find(data)` retorna o node que contém `data`
 
@@ -106,15 +106,15 @@ class HashMap {
 };
 ```
 
-- `hash(key)` pega o valor da chave `key` e produz um hashcode
+- `hash(key)` pega o valor de `key` e produz um hashcode
 
 - `set(key, value)` cria uma entrada com `value` atribuído à `key`
 
-- `get(key)` retorna o valor atríbuido à `key` fornecida
+- `get(key)` retorna o valor atríbuido à `key`
 
-- `has(key)` retorna *true* caso `key` esteja no hash map, ou *false* caso contrário
+- `has(key)` retorna *true* caso `key` esteja no hash map, caso contrário retorna *false*
 
-- `remove(key)` remove a entrada com a `key` fornecida
+- `remove(key)` remove `key` do hash map
 
 - `length()` retorna o número de chaves dentro do hash map
 
@@ -152,7 +152,7 @@ class LinkedList {
 }
 ```
 
-- `append(value)` adiciona um novo node contendo o valor de `value` ao fim da lista
+- `append(value)` adiciona um novo node contendo `value` ao fim da lista
 
 - `preppend(value)` adiciona um novo node contendo `value` ao começo da lista
 
@@ -166,9 +166,9 @@ class LinkedList {
 
 - `pop()` remove o último node da lista
 
-- `contains(value)` retorna *true* se `value` está na lista, ou *false* caso contrário
+- `contains(value)` retorna *true* se `value` estiver na lista, ou *false* caso contrário
 
-- `find(value)` retorna o index do node que contém `value`, ou *null* caso não seja encontrado
+- `find(value)` retorna o index do node que contém `value`, caso contrário retorna *null*
 
 - `toString()` representa os nodes da linked list e suas ligações em forma de string, de forma com que possam ser vistos no console, igual a imagem exemplo acima
 
