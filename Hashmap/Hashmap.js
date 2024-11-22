@@ -1,4 +1,8 @@
-import { LinkedList, createNode } from "./linkedList.js";
+import LinkedList from '../LinkedList/LinkedList.js'
+
+function createNode(key = null, value = null) {
+  return { key: key, value: value, next: null };
+};
 
 function capacity(arr) {
   return arr.length;

@@ -1,4 +1,21 @@
-import { buildTree } from './main.js';
+import Node from "./Node.js";
+import formatArray from "./utils.js";
+
+function buildTree(array) {
+  let start = 0;
+  let end = array.length - 1; 
+  let mid = (start + end) / 2;
+
+  if (start > end) return null;
+
+  array = formatArray(array);
+  let node = new Node(array.splice(mid, 1)[0]);
+
+  node.setLeft(buildTree(array.slice(start, mid)));
+  node.setRight(buildTree(array.slice(mid, end)));
+
+  return node;
+};
 
 function isNull(obj) {
   return obj == null
@@ -6,66 +23,6 @@ function isNull(obj) {
   : false;
 };
 
-class Node {
-  constructor(data) {
-    this.data = data,
-    this.left = null,
-    this.right = null
-  };
-
-  setData(data) {
-    this.data = data;
-  };
-
-  setChild(node) {
-    this.data > node.data
-    ? this.setLeft(node)
-    : this.setRight(node);
-  };
-
-  replace(node) {
-    Object.assign(this, node);
-  };
-
-  setLeft(node) {
-    this.left = node;
-  };
-
-  setRight(node) {
-    this.right = node;
-  };
-
-  deleteLeft() {
-    this.left = null;
-  };
-
-  deleteRight() {
-    this.right = null;
-  };
-
-  isLeaf() {
-    return this.left === null && this.right === null ? true : false;
-  };
-
-  hasBothChildren() {
-    return this.left !== null && this.right !== null ? true : false;
-  };
-
-  hasSingleChild() {
-    if (
-      (this.left !== null && this.right === null)
-      || (this.right !== null && this.left === null)
-    ) return true;
-  };
-
-  hasLeft() {
-    return this.left !== null ? true : false;
-  };
-
-  hasRight() {
-    return this.right !== null ? true : false;
-  };
-};
 
 class Tree {
   constructor(arr) {
@@ -312,4 +269,4 @@ class Tree {
   };
 };
 
-export { Node, Tree };
+export default Tree;
