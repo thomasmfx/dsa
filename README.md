@@ -17,7 +17,7 @@ A ordem do conteúdo do sumário segue do mais recente pro mais antigo, então s
 
 Uma Árvore de Busca Binária é uma estrutura de dados onde cada objeto da árvore, chamados de node, tem no máximo dois filhos, o da esquerda e direita. Por quê balanceada? Manter uma BST balanceada garante uma boa performance, já que sua complexidade de tempo para **pesquisa**, **inserção** e **remoção** de dados é igual a O(log N).
 
-[Código fonte](./binary-search-tree/)
+[Código fonte](./BinarySearchTree/Tree.js)
 
 <div align=center> 
   <img src="./assets/bst.png">
@@ -87,7 +87,7 @@ Cada um dos métodos atravessam a árvore e, para cada node visitado, é executa
 
 Um hashmap (ou hash table) é uma estrutura de dados usado para implementar um map, um tipo de estrutura de dados abstrata. Um hashmap é composto por um array, onde cada index possui uma linked list que atua como uma espécia de "balde". Para inserir e procurar valores, primeiro é realizado uma operação chamada "hashing", que retorna o que é chamado de hashcode. Com o hashcode, é possível pular para o index correspondente ao hashcode no array, que contém uma linked list onde é possível realizar operações como **pesquisa**, **inserção** e **remoção** de entradas.
 
-[Código fonte](./hashmap/)
+[Código fonte](./Hashmap/Hashmap.js)
 
 <div align=center> 
   <img src="./assets/hashmap.png">  
@@ -134,7 +134,7 @@ class HashMap {
 
 Uma lista ligada, é uma estrutura de dados que fornece maior eficiência para operações de **inserção** e **remoção** comparado com um array. Uma linked list consiste em uma sequência de nodes conectados por ponteiros ou referências dependendo da linguagem em que é escrita. Cada node contém um valor e um ponteiro/referência para o próximo node na lista. Linked lists são mais eficientes para **inserção** e **remoção** porque os nodes não são armazenados sequencialmente na memória, ao contrário de um array. 
 
-[Código fonte](./linked-list/)
+[Código fonte](./LinkedList/LinkedList.js)
 
 <div align=center> 
   <img src="./assets/linked-list.png">
@@ -184,11 +184,11 @@ class LinkedList {
 
 Recursão é simplesmente a ideia de uma função que chama a si mesma. A função pega um problema grande e começa a dividir em problemas cada vez menores ("Dividir e conquistar"), e continua fornecendo os resultados para a função original até que uma espécia de resposta é alcançada e toda a cadeia de chamadas é interrompida.
 
-[Código fonte](./recursion/)
-
 ### Propriedades
 
-### [`fibonacci.js`](./recursion/fibonacci.js)
+### `fibonacci.js`
+
+[Código fonte](./Recursion/Fibonacci.js)
 
 A Sequência de Fibonacci é uma sequência numérica onde cada número é a soma dos dois números anteriores. Por exemplo: 0, 1, 1, 2, 3, 5, 8, 13 são os primeiros oito dígitos da sequência. Foram escritas duas funções que retornam um array com todos os números da sequência até o número fornecido, uma versão usando iteração e outra recursiva.
 
@@ -226,7 +226,9 @@ function fibsRec(n) {
 ```
 
 
-### [`mergeSort.js`](./recursion/mergeSort.js)
+### `mergeSort.js`
+
+[Código fonte](./Recursion/MergeSort.js)
 
 Merge sort é um algoritmo de ordenação que usa a abordagem "Dividir e Conquistar", e pode ser muito mais rápido do que outros algoritmos de ordenação (bubble sort por exemplo) nos conjuntos de dados corretos. Essencialmente, um algoritmo de merge sort percorre um array de dados não ordenados até atingir seu menor subconjunto, um único item, e então mescla os itens únicos novamente de forma ordenada.
 

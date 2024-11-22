@@ -17,7 +17,7 @@ The order of the contents in the summary are from newest to oldest created, so i
 
 A Binary Tree Data Structure is a hierarchical data structure where each node has at most two children, the left child and the right child. Why balanced? Keeping it balanced ensures a good performance, as it provide O(log N) time for **search**, **insert** and **delete**.
 
-[Source code](./binary-search-tree/)
+[Source Code](./BinarySearchTree/Tree.js)
 
 <div align=center> 
   <img src="./assets/bst.png">
@@ -87,7 +87,7 @@ Each of the methods traverses the tree and, for each node visited, a function pa
 
 A hashmap (or hash table) is a data structure used to implement the map, an abstract data type. A hashmap is composed of an array, where each index contains a linked list that acts as a "bucket". For setting and looking up values, it first hashes the given value, wich returns what is called a hash code. With the hash code, it jumps to the index of the array with the same value, and since it is a linked list, it's possible to realize common operations such as **search**, **insert** and **delete** entries.
 
-[Source code](./hashmap/)
+[Source Code](./Hashmap/Hashmap.js)
 
 <div align=center> 
   <img src="./assets/hashmap.png">
@@ -134,7 +134,7 @@ class HashMap {
 
 A linked list is a data structure that mainly allows efficient **insertion** and **deletion** operations compared to arrays. It consists of a sequence of nodes connected by pointers or references depending on the language it is written. Each node contains a value and a pointer/reference to the next node in the list. Linked lists are more efficient for **insertion** or **removal** because the nodes are not stored continuously in memory.
 
-[Source code](./linked-list/)
+[Source Code](./LinkedList/LinkedList.js)
 
 <div align=center> 
   <img src="./assets/linked-list.png">
@@ -184,11 +184,9 @@ class LinkedList {
 
 Recursion is simply the idea of a function that calls itself. The function takes a big problem and starts breaking it down into smaller and smaller pieces ("Divide and Conquer") and continue to feed its results into the original function until some sort of answer is achieved and the whole chain stops.
 
-[Source code](./recursion/)
+### `fibonacci.js`
 
-### Features
-
-### [`fibonacci.js`](./recursion/fibonacci.js)
+[Soure code](./Recursion/Fibonacci.js)
 
 The Fibonacci Sequence, is a numerical sequence where each number is the sum of the two numbers before it. Eg. 0, 1, 1, 2, 3, 5, 8, 13 are the first eight digits in the sequence. I wrote two functions that return an array with all the numbers in the sequence up to the given number, an iteration version and a recursive version.
 
@@ -226,7 +224,9 @@ function fibsRec(n) {
 ```
 
 
-### [`mergeSort.js`](./recursion/mergeSort.js)
+### `mergeSort.js`
+
+[Source Code](./Recursion/MergeSort.js)
 
 Merge sort is a sorting algorithm that uses the "Divide and Conquer" approach, and can be much faster than other algorithms such as bubble sort on the right data sets. Essentially, merge sort recurses through an array of unsorted data until it reaches its smallest sub-set, a single item, and then merges the single items back togheter in sorted order.
 
